@@ -4,46 +4,48 @@ import { enhancedImages } from '@sveltejs/enhanced-img'; // <--- 1. Importe isso
 import { defineConfig } from 'vitest/config';
 import { playwright } from '@vitest/browser-playwright';
 import { sveltekit } from '@sveltejs/kit/vite';
+import { imagetools } from 'vite-imagetools';
 
 export default defineConfig({
-    plugins: [
-        enhancedImages(), // <--- 2. Adicione aqui (OBRIGATÓRIO ser antes do sveltekit)
-        tailwindcss(),
-        sveltekit(),
-        devtoolsJson()
-    ],
+	plugins: [
+		enhancedImages(),
+		tailwindcss(),
+		sveltekit(),
+		devtoolsJson(),
+		imagetools()
+	],
 
-    test: {
-        expect: { requireAssertions: true },
+	test: {
+		expect: { requireAssertions: true },
 
-        projects: [
-            {
-                extends: './vite.config.ts',
+		projects: [
+			{
+				extends: './vite.config.ts',
 
-                test: {
-                    name: 'client',
+				test: {
+					name: 'client',
 
-                    browser: {
-                        enabled: true,
-                        provider: playwright(),
-                        instances: [{ browser: 'chromium', headless: true }]
-                    },
+					browser: {
+						enabled: true,
+						provider: playwright(),
+						instances: [{ browser: 'chromium', headless: true }]
+					},
 
-                    include: ['src/**/*.svelte.{test,spec}.{js,ts}'],
-                    exclude: ['src/lib/server/**']
-                }
-            },
+					include: ['src/**/*.svelte.{test,spec}.{js,ts}'],
+					exclude: ['src/lib/server/**']
+				}
+			},
 
-            {
-                extends: './vite.config.ts',
+			{
+				extends: './vite.config.ts',
 
-                test: {
-                    name: 'server',
-                    environment: 'node',
-                    include: ['src/**/*.{test,spec}.{js,ts}'],
-                    exclude: ['src/**/*.svelte.{test,spec}.{js,ts}']
-                }
-            }
-        ]
-    }
+				test: {
+					name: 'server',
+					environment: 'node',
+					include: ['src/**/*.{test,spec}.{js,ts}'],
+					exclude: ['src/**/*.svelte.{test,spec}.{js,ts}']
+				}
+			}
+		]
+	}
 });

@@ -1,21 +1,41 @@
-// 1. Importa TODAS as imagens JPG da pasta imoveis de forma otimizada (?enhanced)
-// O parâmetro 'eager: true' carrega elas no build, e não só quando clica (bom para SEO)
-const todasImagens = import.meta.glob('$lib/assets/imoveis/**/*.{jpg,jpeg,png,webp}', {
+// src/lib/data/images.ts
+
+const todasImagens = import.meta.glob('$lib/assets/images/imoveis/**/*.{jpg,jpeg,png,webp}', {
   eager: true,
   query: { enhanced: true }
 });
 
-// 2. Função auxiliar para pegar a capa
 export function getCapa(pasta: string) {
-  // Procura por algo como .../1-paranapunga/capa.jpg
-  const path = Object.keys(todasImagens).find(path => path.includes(`${pasta}/capa`));
-  return path ? todasImagens[path].default : null;
+  // Procura por 'capa' dentro do caminho da pasta
+  const path = Object.keys(todasImagens).find(path => path.includes(`${pasta}/capa.`));
+
+  if (!path) {
+    console.warn(`⚠️ Capa não encontrada para a pasta: ${pasta}`);
+    return null;
+  }
+
+  return (todasImagens[path] as any).default;
 }
 
-// 3. Função auxiliar para pegar a galeria completa
 export function getGaleria(pasta: string) {
-  // Filtra todas as imagens que estão dentro daquela pasta específica
+  const busca = `/${pasta}/`.toLowerCase();
+
   return Object.keys(todasImagens)
-    .filter(path => path.includes(`/${pasta}/`))
-    .map(path => todasImagens[path].default);
+    .filter(path => path.toLowerCase().includes(busca))
+    .sort((a, b) => {
+      const pathA = a.toLowerCase();
+      const pathB = b.toLowerCase();
+
+      // REGRA DE OURO: Se tiver "capa" no nome, joga para o início (-1)
+      if (pathA.includes('capa.')) return -1;
+      if (pathB.includes('capa.')) return 1;
+
+      // Opcional: Se quiser que 'sala' venha logo depois da capa, pode adicionar:
+      // if (pathA.includes('sala.')) return -1;
+      // if (pathB.includes('sala.')) return 1;
+
+      // Para o resto, usa ordem alfabética normal
+      return pathA.localeCompare(pathB);
+    })
+    .map(path => (todasImagens[path] as any).default);
 }

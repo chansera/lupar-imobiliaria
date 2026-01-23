@@ -3,9 +3,13 @@
   import SearchBox from '$lib/components/organisms/SearchBox.svelte';
   import SectionCarousel from '$lib/components/organisms/SectionCarousel.svelte';
 
+  // Nossos novos componentes estruturais
+  import HomeSearchWrapper from '$lib/components/molecules/HomeSearchWrapper.svelte';
+  import Section from '$lib/components/atoms/Section.svelte';
+  import Divider from '$lib/components/atoms/Divider.svelte';
+
   import { imoveis } from '$lib/data/imoveis';
 
-  // Filtra as listas
   const imoveisVenda = imoveis.filter(i => i.finalidade === 'venda');
   const imoveisAluguel = imoveis.filter(i => i.finalidade === 'aluguel');
 </script>
@@ -19,26 +23,26 @@
   <span slot="subtitle">Confira as melhores oportunidades de Três Lagoas e região.</span>
 </Hero>
 
-<div class="relative z-30 px-4 mb-8">
+<HomeSearchWrapper>
   <SearchBox />
-</div>
+</HomeSearchWrapper>
 
-<div class="bg-white">
+<Section>
   <SectionCarousel
     title="Oportunidades de Venda"
     subtitle="Casas, terrenos e comerciais prontos para negócio."
     items={imoveisVenda}
     linkVerMais="/imoveis?finalidade=venda"
   />
-</div>
+</Section>
 
-<div class="container mx-auto px-4"><hr class="border-gray-100"></div>
+<Divider />
 
-<div class="bg-white pb-20">
+<Section class="pb-20">
   <SectionCarousel
     title="Aluguel Rápido"
     subtitle="Imóveis selecionados para locação imediata."
     items={imoveisAluguel}
     linkVerMais="/imoveis?finalidade=aluguel"
   />
-</div>
+</Section>
