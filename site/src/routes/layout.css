@@ -1,1 +1,27 @@
-@import 'tailwindcss';
+@import "tailwindcss";
+
+@theme {
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-300: #d1d5db;
+  --color-gray-500: #6b7280;
+  --color-gray-900: #111827;
+  --color-red-600: #dc2626;
+  --color-white: #ffffff;
+
+  /* --- COR AJUSTADA (Mais vibrante) --- */
+  /* Antes era #3D3C7E (Muito escuro/fosco) */
+  /* Agora é um tom mais aceso, mas na mesma paleta */
+  --color-brand: #4C4AB5;
+
+  /* Hover levemente mais escuro */
+  --color-brand-dark: #373592;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-gray-50);
+    color: var(--color-gray-900);
+    font-family: ui-sans-serif, system-ui, sans-serif;
+  }
+}

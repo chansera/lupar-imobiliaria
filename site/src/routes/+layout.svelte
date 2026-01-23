@@ -1,9 +1,17 @@
 <script lang="ts">
-	import './layout.css';
-	import favicon from '$lib/assets/favicon.svg';
-
-	let { children } = $props();
+  import Header from '$lib/components/organisms/Header.svelte';
+  import Footer from '$lib/components/organisms/Footer.svelte';
+  import './layout.css'; // Geralmente o Tailwind é importado aqui como app.css, mas se o seu for layout.css, mantenha.
 </script>
 
-<svelte:head><link rel="icon" href={favicon} /></svelte:head>
-{@render children()}
+<div class="min-h-screen flex flex-col bg-gray-50 font-sans text-gray-900">
+
+  <Header />
+
+  <main class="flex-grow">
+    <slot />
+  </main>
+
+  <Footer />
+
+</div>
