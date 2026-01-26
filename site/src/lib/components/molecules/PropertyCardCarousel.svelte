@@ -1,53 +1,172 @@
 <script lang="ts">
   import type { Imovel } from '$lib/types/Property';
-  import { onMount } from 'svelte';
+  import { onMount, tick } from 'svelte';
 
   export let imovel: Imovel;
 
   // Lógica de fotos com fallback
   $: fotosOriginais = imovel.galeria?.length ? imovel.galeria : [imovel.imagem];
+  $: totalOriginal = fotosOriginais.length;
 
-  // Para o loop infinito fluido, clonamos a primeira foto no final
-  $: fotos = [...fotosOriginais, fotosOriginais[0]];
+  // Apenas clone o primeiro slide no final para efeito infinito
+  $: fotos = totalOriginal > 1
+    ? [...fotosOriginais, fotosOriginais[0]]
+    : fotosOriginais;
 
   let currentSlide = 0;
   let scrollContainer: HTMLElement;
+  let isAnimating = false;
+  let isManualScroll = false;
+  let autoplayInterval: NodeJS.Timeout;
 
   const MAX_DOTS = 5;
-  $: totalOriginal = fotosOriginais.length;
+  const TRANSITION_DURATION = 300;
 
-  // Cálculo das bolinhas (baseado no array original)
+  // Índice visual para os dots (não inclui o clone)
   $: displayIndex = currentSlide % totalOriginal;
-  $: startIndex = totalOriginal <= MAX_DOTS
-      ? 0
-      : Math.max(0, Math.min(displayIndex - 2, totalOriginal - MAX_DOTS));
-  $: visibleDots = Array.from({ length: Math.min(MAX_DOTS, totalOriginal) }, (_, i) => startIndex + i);
 
-  function handleScroll() {
-    if (!scrollContainer) return;
+  $: startIndex = totalOriginal <= MAX_DOTS
+    ? 0
+    : Math.max(0, Math.min(displayIndex - 2, totalOriginal - MAX_DOTS));
+
+  $: visibleDots = Array.from(
+    { length: Math.min(MAX_DOTS, totalOriginal) },
+    (_, i) => startIndex + i
+  );
+
+  // Função otimizada para scroll suave
+  async function handleScroll() {
+    if (!scrollContainer || isAnimating) return;
+
     const scrollLeft = scrollContainer.scrollLeft;
     const width = scrollContainer.clientWidth;
+    const newSlide = Math.round(scrollLeft / width);
 
-    currentSlide = Math.round(scrollLeft / width);
+    // Se chegou no clone (último slide)
+    if (newSlide === totalOriginal && !isManualScroll) {
+      isAnimating = true;
 
-    // MÁGICA DO LOOP INFINITO (Mobile e Desktop)
-    // Se chegou no clone (último item), pula silenciosamente para o primeiro
-    if (scrollLeft >= (fotos.length - 1) * width) {
-        scrollContainer.scrollTo({ left: 1, behavior: 'auto' });
+      // Transição instantânea para o primeiro slide
+      scrollContainer.style.scrollBehavior = 'auto';
+      scrollContainer.scrollLeft = 0;
+
+      await tick();
+
+      scrollContainer.style.scrollBehavior = 'smooth';
+      currentSlide = 0;
+      isAnimating = false;
+    } else {
+      currentSlide = newSlide;
     }
-    // Se chegou antes do primeiro, pula para o penúltimo (o original)
-    if (scrollLeft <= 0) {
-        scrollContainer.scrollTo({ left: (fotos.length - 2) * width, behavior: 'auto' });
-    }
+
+    isManualScroll = false;
   }
 
   function scrollTo(direction: 'left' | 'right') {
-    if (!scrollContainer) return;
-    const width = scrollContainer.clientWidth;
-    const move = direction === 'right' ? width : -width;
+    if (!scrollContainer || isAnimating) return;
 
-    scrollContainer.scrollBy({ left: move, behavior: 'smooth' });
+    isAnimating = true;
+    isManualScroll = true;
+
+    const width = scrollContainer.clientWidth;
+    let targetSlide = direction === 'right' ? currentSlide + 1 : currentSlide - 1;
+
+    // Se for para a direita do último original, vai para o clone
+    if (targetSlide > totalOriginal) {
+      targetSlide = totalOriginal; // clone
+    }
+    // Se for para a esquerda do primeiro, vai para o último original
+    else if (targetSlide < 0) {
+      targetSlide = totalOriginal - 1;
+    }
+
+    scrollContainer.scrollTo({
+      left: width * targetSlide,
+      behavior: 'smooth'
+    });
+
+    currentSlide = targetSlide;
+
+    // Se chegou no clone, volta ao início silenciosamente
+    if (targetSlide === totalOriginal) {
+      setTimeout(async () => {
+        if (scrollContainer) {
+          // Transição instantânea
+          scrollContainer.style.scrollBehavior = 'auto';
+          scrollContainer.scrollLeft = 0;
+
+          await tick();
+
+          scrollContainer.style.scrollBehavior = 'smooth';
+          currentSlide = 0;
+          isAnimating = false;
+        }
+      }, TRANSITION_DURATION + 50);
+    } else {
+      setTimeout(() => {
+        isAnimating = false;
+      }, TRANSITION_DURATION);
+    }
   }
+
+  function goToSlide(index: number) {
+    if (!scrollContainer || isAnimating || totalOriginal <= 1) return;
+
+    isAnimating = true;
+    isManualScroll = true;
+    const width = scrollContainer.clientWidth;
+
+    scrollContainer.scrollTo({
+      left: width * index,
+      behavior: 'smooth'
+    });
+
+    currentSlide = index;
+
+    setTimeout(() => {
+      isAnimating = false;
+    }, TRANSITION_DURATION);
+  }
+
+  // Touch/swipe support
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  function handleTouchStart(e: TouchEvent) {
+    touchStartX = e.changedTouches[0].screenX;
+  }
+
+  function handleTouchEnd(e: TouchEvent) {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+    const threshold = 50;
+
+    if (Math.abs(diff) > threshold) {
+      if (diff > 0) {
+        scrollTo('right');
+      } else {
+        scrollTo('left');
+      }
+    }
+  }
+
+  // Inicialização
+  onMount(() => {
+    if (scrollContainer) {
+      // Garante que comece no primeiro slide
+      scrollContainer.scrollLeft = 0;
+      currentSlide = 0;
+
+      // Auto-play opcional (descomente se quiser)
+      // autoplayInterval = setInterval(() => {
+      //   if (!isAnimating) scrollTo('right');
+      // }, 4000);
+    }
+
+    return () => {
+      if (autoplayInterval) clearInterval(autoplayInterval);
+    };
+  });
 
   // Helper para extrair SRC da imagem
   const getSrc = (f: any) => typeof f === 'string' ? f : f?.img?.src || f?.src || f;
@@ -59,15 +178,20 @@
     <div
       bind:this={scrollContainer}
       on:scroll={handleScroll}
+      on:touchstart={handleTouchStart}
+      on:touchend={handleTouchEnd}
       class="scrollbar-hide flex h-full w-full overflow-x-auto snap-x snap-mandatory select-none"
+      style="scroll-behavior: smooth;"
     >
       {#each fotos as foto, i}
         <div class="relative h-full min-w-full snap-center">
           <img
             src={getSrc(foto)}
-            alt="Foto do imóvel"
+            alt="Foto {i + 1} do imóvel"
             class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
             loading={i === 0 ? "eager" : "lazy"}
+            decoding="async"
+            draggable="false"
           />
           <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60"></div>
         </div>
@@ -76,24 +200,35 @@
 
     {#if totalOriginal > 1}
       <button
-        class="absolute left-3 top-1/2 z-20 hidden -translate-y-1/2 rounded-full bg-white/90 p-2 text-gray-900 md:group-hover:flex hover:bg-white"
+        class="absolute left-3 top-1/2 z-20 hidden -translate-y-1/2 rounded-full bg-white/90 p-2.5 text-gray-900 shadow-sm md:group-hover:flex hover:bg-white active:scale-95 transition-all duration-200"
         on:click|preventDefault|stopPropagation={() => scrollTo('left')}
+        aria-label="Foto anterior"
       >
-        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke-width="2.5"/></svg>
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/>
+        </svg>
       </button>
 
       <button
-        class="absolute right-3 top-1/2 z-20 hidden -translate-y-1/2 rounded-full bg-white/90 p-2 text-gray-900 md:group-hover:flex hover:bg-white"
+        class="absolute right-3 top-1/2 z-20 hidden -translate-y-1/2 rounded-full bg-white/90 p-2.5 text-gray-900 shadow-sm md:group-hover:flex hover:bg-white active:scale-95 transition-all duration-200"
         on:click|preventDefault|stopPropagation={() => scrollTo('right')}
+        aria-label="Próxima foto"
       >
-        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-width="2.5"/></svg>
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+        </svg>
       </button>
     {/if}
 
     {#if totalOriginal > 1}
-      <div class="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 items-center gap-1.5 pointer-events-none">
+      <div class="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2 pointer-events-none">
         {#each visibleDots as index (index)}
-          <div class="rounded-full transition-all duration-300 {index === displayIndex ? 'h-2 w-2 bg-white scale-110' : 'h-1.5 w-1.5 bg-white/50'}"></div>
+          <button
+            class="pointer-events-auto rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 {index === displayIndex ? 'h-2 w-2 bg-white scale-110' : 'h-1.5 w-1.5 bg-white/50 hover:bg-white/80'}"
+            on:click|preventDefault|stopPropagation={() => goToSlide(index)}
+            aria-label={`Ir para foto ${index + 1}`}
+            aria-current={index === displayIndex ? 'true' : 'false'}
+          ></button>
         {/each}
       </div>
     {/if}

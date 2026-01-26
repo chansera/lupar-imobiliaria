@@ -3,7 +3,6 @@
   import { imoveis } from '$lib/data/imoveis';
   import { slide } from 'svelte/transition';
 
-  // MUDANÇA: Importando o componente com carrossel de fotos
   import PropertyCardCarousel from '$lib/components/molecules/PropertyCardCarousel.svelte';
   import FilterSidebar from '$lib/components/organisms/FilterSidebar.svelte';
 

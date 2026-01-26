@@ -1,5 +1,4 @@
 <script lang="ts">
-  // MUDANÇA: Importando o Card com Carrossel
   import PropertyCardCarousel from '$lib/components/molecules/PropertyCardCarousel.svelte';
   import type { Imovel } from '$lib/types/Property';
 
