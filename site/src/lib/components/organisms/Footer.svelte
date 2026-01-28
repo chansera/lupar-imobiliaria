@@ -7,7 +7,7 @@
   <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
 
     <div class="flex flex-col items-start">
-      <img src={logoImg} alt="Lupar" class="h-16 w-auto mb-5 object-contain" />
+      <img src={logoImg} alt="Lupar" class="h-24 w-auto object-contain " />
 
       <p class="text-sm leading-relaxed text-gray-500 text-left max-w-xs">
          Comprar, vender ou alugar, procure a Lupar!
