@@ -1,6 +1,6 @@
 <script>
  import { SITE_INFO } from '$lib/constants';
- import logoImg from '$lib/assets/logo.jpg';
+ import logoImg from '$lib/assets/logo.png';
 </script>
 
 <footer class="bg-white text-gray-600 py-12 border-t border-gray-100 mt-auto font-sans">
