@@ -1,7 +1,7 @@
 <script lang="ts">
  import { page } from '$app/stores';
  import { slide } from 'svelte/transition';
- import { SITE_INFO } from '$lib/constants';
+ import { SITE_INFO, SITE_ROUTES,ACTIVE_PATH_PATTERNS } from '$lib/constants';
  import logoImg from '$lib/assets/logo.png';
 
  let isMenuOpen = false;
@@ -14,14 +14,6 @@
      isMenuOpen = false;
  }
 
- const links = [
-     { name: 'Início', href: '/' },
-     { name: 'Imóveis', href: '/imoveis' },
-//   { name: 'Sobre', href: '/sobre' },
-//   { name: 'Contato', href: '/contato' }
- ];
-
- $: activePath = $page.url.pathname;
 </script>
 
 <header class="relative z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100 font-sans">
@@ -37,14 +29,14 @@
             </a>
 
             <nav class="hidden md:flex items-center gap-8 lg:mr-32">
-                {#each links as link}
+                {#each SITE_ROUTES as link}
                     <a
                         href={link.href}
                         class="text-sm font-bold uppercase tracking-wide transition-all relative py-2 lg:mr-8
-                             {activePath === link.href ? 'text-brand' : 'text-gray-500 hover:text-brand'}"
+                             {ACTIVE_PATH_PATTERNS === link.href ? 'text-brand' : 'text-gray-500 hover:text-brand'}"
                     >
                         {link.name}
-                        {#if activePath === link.href}
+                        {#if ACTIVE_PATH_PATTERNS === link.href}
                             <span class="absolute bottom-0 left-0 w-full h-0.5 bg-brand rounded-full" transition:slide></span>
                         {/if}
                     </a>
@@ -87,7 +79,7 @@
                 <a
                     href={link.href}
                     class="block py-3 px-4 rounded-lg font-bold text-gray-700 hover:bg-brand/5 hover:text-brand transition-colors
-                         {activePath === link.href ? 'bg-brand/5 text-brand' : ''}"
+                         {ACTIVE_PATH_PATTERNS === link.href ? 'bg-brand/5 text-brand' : ''}"
                     on:click={closeMenu}
                 >
                     {link.name}
