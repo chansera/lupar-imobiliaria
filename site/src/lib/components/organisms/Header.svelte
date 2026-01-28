@@ -2,7 +2,7 @@
   import { page } from '$app/stores';
   import { slide } from 'svelte/transition';
   import { SITE_INFO } from '$lib/constants';
-  import logoImg from '$lib/assets/logo.jpg';
+  import logoImg from '$lib/assets/logo.png';
 
   let isMenuOpen = false;
 
@@ -17,8 +17,8 @@
   const links = [
     { name: 'Início', href: '/' },
     { name: 'Imóveis', href: '/imoveis' },
-//    { name: 'Sobre', href: '/sobre' },
-//    { name: 'Contato', href: '/contato' }
+      { name: 'Sobre', href: '/sobre' },
+      { name: 'Contato', href: '/contato' }
   ];
 
   $: activePath = $page.url.pathname;
@@ -28,19 +28,19 @@
   <div class="container mx-auto px-4">
     <div class="flex items-center justify-between h-20">
 
-      <a href="/" class="ml-8 flex items-center gap-2.5" on:click={closeMenu}>
+      <a href="/" class=" flex items-center gap-2.5 lg:ml-32" on:click={closeMenu}>
         <img
           src={logoImg}
           alt={SITE_INFO.nome}
-          class="h-16 w-auto object-contain ml-2"
+          class="h-20 w-auto object-contain ml-2"
         />
       </a>
 
-      <nav class="hidden md:flex items-center gap-8">
+      <nav class="hidden md:flex items-center gap-8 lg:mr-32">
         {#each links as link}
           <a
             href={link.href}
-            class="text-sm font-bold uppercase tracking-wide transition-all relative py-2
+            class="text-sm font-bold uppercase tracking-wide transition-all relative py-2 lg:mr-8
             {activePath === link.href ? 'text-brand' : 'text-gray-500 hover:text-brand'}"
           >
             {link.name}
@@ -51,7 +51,7 @@
         {/each}
       </nav>
 
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-4 lg:mr-[7.5rem]">
 
         <a
           href="https://wa.me/{SITE_INFO.whatsapp}"
