@@ -75,7 +75,7 @@
             transition:slide={{ duration: 300 }}
             style="max-height: calc(100vh - 80px); overflow-y: auto;"
         >
-            {#each links as link}
+            {#each SITE_ROUTES as link}
                 <a
                     href={link.href}
                     class="block py-3 px-4 rounded-lg font-bold text-gray-700 hover:bg-brand/5 hover:text-brand transition-colors
