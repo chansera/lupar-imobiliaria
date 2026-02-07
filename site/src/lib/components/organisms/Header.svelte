@@ -20,7 +20,7 @@
     <div class="container mx-auto px-4">
         <div class="flex items-center justify-between h-20">
 
-            <a href="/" class=" flex items-center gap-2.5 lg:ml-32" on:click={closeMenu}>
+            <a href="/" class=" flex items-center gap-2.5 " on:click={closeMenu}>
                 <img
                     src={logoImg}
                     alt={SITE_INFO.nome}
@@ -28,7 +28,7 @@
                 />
             </a>
 
-            <nav class="hidden md:flex items-center gap-8 lg:mr-32">
+            <nav class="hidden md:flex items-center gap-8 ">
                 {#each SITE_ROUTES as link}
                     <a
                         href={link.href}
