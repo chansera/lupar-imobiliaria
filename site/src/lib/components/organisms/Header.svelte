@@ -20,7 +20,7 @@
     <div class="container mx-auto px-4">
         <div class="flex items-center justify-between h-20">
 
-            <a href="/" class=" flex items-center gap-2.5 " on:click={closeMenu}>
+            <a href="/" class=" flex items-center gap-2.5 lg:ml-20" on:click={closeMenu}>
                 <img
                     src={logoImg}
                     alt={SITE_INFO.nome}
@@ -32,7 +32,7 @@
                 {#each SITE_ROUTES as link}
                     <a
                         href={link.href}
-                        class="text-sm font-bold uppercase tracking-wide transition-all relative py-2 lg:mr-8
+                        class="text-sm font-bold uppercase tracking-wide transition-all relative py-2
                              {ACTIVE_PATH_PATTERNS === link.href ? 'text-brand' : 'text-gray-500 hover:text-brand'}"
                     >
                         {link.name}
@@ -43,7 +43,7 @@
                 {/each}
             </nav>
 
-            <div class="flex items-center gap-4 lg:mr-[7.5rem]">
+            <div class="flex items-center gap-4 mr-20">
 
                 <a
                     href="https://wa.me/{SITE_INFO.whatsapp}"

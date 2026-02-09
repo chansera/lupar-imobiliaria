@@ -1,7 +1,7 @@
 <script>
   // Importe a imagem aqui
   // Se você já configurou o 'enhanced-img', pode usar ?enhanced
-  import heroBg from '$lib/assets/banner-home.jpg';
+  import heroBg from '$lib/assets/banner-home.png';
 </script>
 
 <section class="relative bg-slate-900 text-white py-20 md:py-32 overflow-hidden">
@@ -13,6 +13,7 @@
       class="w-full h-full object-cover"
     />
   </div>
+
 
   <div class="absolute inset-0 bg-slate-900/80 z-0 mix-blend-multiply"></div>
 
