@@ -1,6 +1,4 @@
 <script>
-  // Importe a imagem aqui
-  // Se você já configurou o 'enhanced-img', pode usar ?enhanced
   import heroBg from '$lib/assets/banner-home.png';
 </script>
 
