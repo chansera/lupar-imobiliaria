@@ -4,7 +4,6 @@
   import SectionCarousel from '$lib/components/organisms/SectionCarousel.svelte';
 
   // Nossos novos componentes estruturais
-  import HomeSearchWrapper from '$lib/components/molecules/HomeSearchWrapper.svelte';
   import Section from '$lib/components/atoms/Section.svelte';
   import Divider from '$lib/components/atoms/Divider.svelte';
 
@@ -23,26 +22,24 @@
   <span slot="subtitle">Confira as melhores oportunidades de Três Lagoas e região.</span>
 </Hero>
 
-<HomeSearchWrapper>
-  <SearchBox />
-</HomeSearchWrapper>
+<SearchBox />
 
 <Section>
-  <SectionCarousel
-    title="Oportunidades de Venda"
-    subtitle="Casas, terrenos e comerciais prontos para negócio."
-    items={imoveisVenda}
-    linkVerMais="/imoveis?finalidade=venda"
-  />
+    <SectionCarousel
+        title="Oportunidades de Venda"
+        subtitle="Casas, terrenos e comerciais prontos para negócio."
+        items={imoveisVenda}
+        linkVerMais="/imoveis?finalidade=venda"
+    />
 </Section>
 
 <Divider />
 
 <Section class="pb-20">
-  <SectionCarousel
-    title="Aluguel Rápido"
-    subtitle="Imóveis selecionados para locação imediata."
-    items={imoveisAluguel}
-    linkVerMais="/imoveis?finalidade=aluguel"
-  />
+    <SectionCarousel
+        title="Aluguel Rápido"
+        subtitle="Imóveis selecionados para locação imediata."
+        items={imoveisAluguel}
+        linkVerMais="/imoveis?finalidade=aluguel"
+    />
 </Section>
