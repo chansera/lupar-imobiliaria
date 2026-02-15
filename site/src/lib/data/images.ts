@@ -2,7 +2,6 @@
 
 const todasImagens = import.meta.glob('$lib/assets/images/imoveis/**/*.{jpg,jpeg,png,webp}', {
   eager: true,
-  query: { enhanced: true }
 });
 
 export function getCapa(pasta: string) {

@@ -1,13 +1,13 @@
 <script lang="ts">
-  import { page } from '$app/stores';
+  import { page } from '$app/state';
   import { imoveis } from '$lib/data/imoveis';
   import { slide } from 'svelte/transition';
 
   import PropertyCardCarousel from '$lib/components/molecules/PropertyCardCarousel.svelte';
   import FilterSidebar from '$lib/components/organisms/FilterSidebar.svelte';
 
-  let finalidade = $page.url.searchParams.get('finalidade') || 'venda';
-  let tiposURL = $page.url.searchParams.get('tipos');
+  let finalidade = page.url.searchParams.get('finalidade') || 'venda';
+  let tiposURL = page.url.searchParams.get('tipos');
   let tiposSelecionados: string[] = tiposURL ? tiposURL.toLowerCase().split(',') : [];
   let quartosMin = 0;
   let banheirosMin = 0;
