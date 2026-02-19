@@ -1,11 +1,11 @@
 <script lang="ts">
  import { SITE_INFO, SITE_ROUTES } from '$lib/constants';
- import { page } from '$app/stores';
+ import { page } from '$app/state';
  import logoImg from '$lib/assets/logo.png';
 
  // Função para verificar se a rota está ativa (mesma lógica do Header)
  function isActive(href: string): boolean {
-     const currentPath = $page.url.pathname;
+     const currentPath = page.url.pathname;
 
      // Se for a home
      if (href === '/' && currentPath === '/') return true;
