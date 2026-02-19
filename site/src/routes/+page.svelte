@@ -19,10 +19,10 @@
 	<title>Lupar Imobiliária | Início</title>
 </svelte:head>
 
-<Hero>
-	<span slot="title">Seu novo lar começa aqui</span>
-	<span slot="subtitle">Confira as melhores oportunidades de Três Lagoas e região.</span>
-</Hero>
+<Hero
+	title="Seu novo lar começa aqui"
+	subtitle="Confira as melhores oportunidades de Três Lagoas e região."
+/>
 
 <SearchBox />
 
