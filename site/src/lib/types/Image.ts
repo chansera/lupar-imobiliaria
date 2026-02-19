@@ -2,5 +2,5 @@
 export interface ImovelImage {
     url: string;
     alt: string;
-    isCover: string;
+    isCover: boolean;
 }

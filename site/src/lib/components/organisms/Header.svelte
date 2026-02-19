@@ -1,7 +1,7 @@
 <script lang="ts">
  import { slide } from 'svelte/transition';
  import { SITE_INFO, SITE_ROUTES,ACTIVE_PATH_PATTERNS } from '$lib/constants';
- import logoImg from '$lib/assets/logo.png';
+ import logoImg from '$lib/assets/logo.webp';
 
  let {isMenuOpen = false} = $props();
 

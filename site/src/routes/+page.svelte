@@ -1,45 +1,47 @@
 <script lang="ts">
-  import Hero from '$lib/components/organisms/Hero.svelte';
-  import SearchBox from '$lib/components/organisms/SearchBox.svelte';
-  import SectionCarousel from '$lib/components/organisms/SectionCarousel.svelte';
+	import Hero from '$lib/components/organisms/Hero.svelte';
+	import SearchBox from '$lib/components/organisms/SearchBox.svelte';
+	import SectionCarousel from '$lib/components/organisms/SectionCarousel.svelte';
 
-  // Nossos novos componentes estruturais
-  import Section from '$lib/components/atoms/Section.svelte';
-  import Divider from '$lib/components/atoms/Divider.svelte';
+	// Nossos componentes estruturais (Átomos)
+	import Section from '$lib/components/atoms/Section.svelte';
+	import Divider from '$lib/components/atoms/Divider.svelte';
 
-  import { imoveis } from '$lib/data/imoveis';
+	// Dados mockados
+	import { imoveis } from '$lib/data/imoveis';
 
-  const imoveisVenda = imoveis.filter(i => i.finalidade === 'venda');
-  const imoveisAluguel = imoveis.filter(i => i.finalidade === 'aluguel');
+	// Correção: Usando o case exato dos nossos Tipos ('Venda' e 'Aluguel')
+	const imoveisVenda = imoveis.filter(i => i.finalidade === 'Venda');
+	const imoveisAluguel = imoveis.filter(i => i.finalidade === 'Aluguel');
 </script>
 
 <svelte:head>
-  <title>Lupar Imobiliária | Início</title>
+	<title>Lupar Imobiliária | Início</title>
 </svelte:head>
 
 <Hero>
-  <span slot="title">Seu novo lar começa aqui</span>
-  <span slot="subtitle">Confira as melhores oportunidades de Três Lagoas e região.</span>
+	<span slot="title">Seu novo lar começa aqui</span>
+	<span slot="subtitle">Confira as melhores oportunidades de Três Lagoas e região.</span>
 </Hero>
 
 <SearchBox />
 
 <Section>
-    <SectionCarousel
-        title="Oportunidades de Venda"
-        subtitle="Casas, terrenos e comerciais prontos para negócio."
-        items={imoveisVenda}
-        linkVerMais="/imoveis?finalidade=venda"
-    />
+	<SectionCarousel
+		title="Oportunidades de Venda"
+		subtitle="Casas, terrenos e comerciais prontos para negócio."
+		items={imoveisVenda}
+		linkVerMais="/imoveis?finalidade=venda"
+	/>
 </Section>
 
 <Divider />
 
 <Section class="pb-20">
-    <SectionCarousel
-        title="Aluguel Rápido"
-        subtitle="Imóveis selecionados para locação imediata."
-        items={imoveisAluguel}
-        linkVerMais="/imoveis?finalidade=aluguel"
-    />
+	<SectionCarousel
+		title="Aluguel Rápido"
+		subtitle="Imóveis selecionados para locação imediata."
+		items={imoveisAluguel}
+		linkVerMais="/imoveis?finalidade=aluguel"
+	/>
 </Section>

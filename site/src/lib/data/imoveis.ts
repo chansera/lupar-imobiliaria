@@ -1,9 +1,11 @@
-import type { Imovel } from '$lib/types/Property';
+// src/lib/data/imoveis.ts
+import type { Imovel } from '$lib/types/Imovel';
 
 export const imoveis: Imovel[] = [
     {
-        id: 'casa-paranapunga',
+        cod: 'casa-paranapunga',
         titulo: 'Casa à Venda no Paranapungá',
+        slug: 'casa-paranapunga',
         preco: 370_000,
         tipo: 'Casa',
         finalidade: 'Venda',
@@ -16,12 +18,36 @@ export const imoveis: Imovel[] = [
         areaTotal: 400,
         areaConstruida: 167,
         descricao: `• 03 quartos, sendo 01 suíte\n• 02 Banheiros social\n• Sala\n• Cozinha\n• Lavanderia\n• Garagem coberta`,
-        devImagens: 'paranapunga/casa1'
+        imagens: [
+            {
+                url: '/assets/images/imoveis/paranapunga/casa1/capa.jpeg',
+                alt: 'Casa no Paranapungá - Vista frontal',
+                isCover: true
+            },
+            {
+                url: '/assets/images/imoveis/paranapunga/casa1/quarto1.jpeg',
+                alt: 'Quarto 1 da casa',
+                isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/paranapunga/casa1/sala.jpeg',
+                alt: 'Sala ampla com móveis',
+                isCover: false
+            },
+            // Adicione todas as outras imagens seguindo o mesmo padrão
+            {
+                url: '/assets/images/imoveis/paranapunga/casa1/garagem.jpeg',
+                alt: 'Garagem coberta',
+                isCover: false
+            }
+        ]
     },
+    // Repita o padrão para os outros imóveis
     {
-        id: 'barracao-br',
+        cod: 'barracao-br',
         titulo: 'Barracões em frente a BR-262',
-        preco: 8_000 ,
+        slug: 'barracao-br',
+        preco: 8_000,
         tipo: 'Barracão',
         finalidade: 'Aluguel',
         bairro: 'Nova Três Lagoas',
@@ -29,20 +55,17 @@ export const imoveis: Imovel[] = [
         banheiros: 2,
         areaTotal: 442,
         descricao: `• 02 banheiros\n• 01 Copa\n• Espaço amplo\n• Portão basculante de 5,5m de altura\n• Ótima localização em frente a BR-262`,
-        devImagens: 'barracao-br',
-    },
-    {
-        id: 'apt-don-el-chall',
-        titulo: 'Apartamento Don El Chall',
-        preco:  2_500 ,
-        tipo: 'Apartamento',
-        finalidade: 'Aluguel',
-        bairro: 'Jardim Alvorada',
-        cidade: 'Três Lagoas',
-        quartos: 3,
-        suites: 1,
-        banheiros: 1,
-        descricao: `• 03 quartos, sendo 01 suíte\n• 01 banheiro social\n• Sala e Cozinha\n• Lavanderia\n• Sacada com churrasqueira\n Incluso condomínio e IPTU`,
-        devImagens: 'apt-jdAlvorada',
+        imagens: [
+            {
+                url: '/assets/images/imoveis/barracao-br/capa.jpeg',
+                alt: 'Barracão em frente à BR-262',
+                isCover: true
+            },
+            {
+                url: '/assets/images/imoveis/barracao-br/barracao.jpeg',
+                alt: 'Interior do barracão',
+                isCover: false
+            }
+        ]
     }
 ];
