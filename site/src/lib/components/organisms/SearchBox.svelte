@@ -1,120 +1,196 @@
 <script lang="ts">
-  import { goto } from '$app/navigation';
-  import { imoveis } from '$lib/data/imoveis';
-  import { slide } from 'svelte/transition';
+	import { goto } from '$app/navigation';
+	import { imoveis } from '$lib/data/imoveis';
+	import { slide } from 'svelte/transition';
 
-  let finalidade: 'venda' | 'aluguel' = 'venda';
-  let localizacao = '';
-  let isDropdownOpen = false;
-  let tiposSelecionados: string[] = [];
+	// 1. Svelte 5: Estado com $state()
+	let finalidade = $state<'Venda' | 'Aluguel'>('Venda');
+	let localizacao = $state('');
+	let codigo = $state(''); // Novo campo
 
-  const gruposTipos = [
-    {
-      titulo: 'Residencial',
-      tipos: ['Casa', 'Apartamento', 'Sobrado', 'Kitnet', 'Terreno em Condomínio']
-    },
-    {
-      titulo: 'Comercial & Rural',
-      tipos: ['Salão Comercial', 'Galpão', 'Sala', 'Prédio Inteiro', 'Terreno Comercial', 'Rural']
-    }
-  ];
+	let isDropdownOpen = $state(false);
+	let isSugestoesOpen = $state(false); // Novo controle para o autocomplete
+	let tiposSelecionados = $state<string[]>([]);
 
-  function toggleTipo(t: string) {
-    if (tiposSelecionados.includes(t)) {
-      tiposSelecionados = tiposSelecionados.filter(item => item !== t);
-    } else {
-      tiposSelecionados = [...tiposSelecionados, t];
-    }
-  }
+	const gruposTipos = [
+		{
+			titulo: 'Residencial',
+			tipos: ['Casa', 'Apartamento', 'Sobrado', 'Kitnet', 'Terreno em Condomínio']
+		},
+		{
+			titulo: 'Comercial & Rural',
+			tipos: ['Salão Comercial', 'Barracão', 'Sala', 'Prédio Inteiro', 'Terreno Comercial', 'Terreno']
+		}
+	];
 
-  function getButtonText() {
-    if (tiposSelecionados.length === 0) return 'Todos os tipos';
-    return tiposSelecionados.join('...');
-  }
+	// 2. Extraindo cidades e bairros sem repetição e corrigindo para o singular (bairro)
+	const todasSugestoes = [...new Set([
+		...imoveis.map(i => i.cidade),
+		...imoveis.map(i => i.bairro)
+	])].filter(Boolean).sort();
 
-  const sugestoes = [...new Set([
-    ...imoveis.map(i => i.cidade),
-    ...imoveis.map(i => i.bairros)
-  ])].sort();
+	// 3. Svelte 5: O $derived atualiza automaticamente a lista sempre que o usuário digita
+	let sugestoesFiltradas = $derived(
+		localizacao.trim() === ''
+			? []
+			: todasSugestoes.filter(s => s.toLowerCase().includes(localizacao.toLowerCase()))
+	);
 
-  function handleSearch() {
-    const params = new URLSearchParams();
-    params.set('finalidade', finalidade);
-    if (tiposSelecionados.length > 0) params.set('tipos', tiposSelecionados.join(',').toLowerCase());
-    if (localizacao) params.set('q', localizacao);
-    goto(`/imoveis?${params.toString()}`);
-  }
+	function toggleTipo(t: string) {
+		if (tiposSelecionados.includes(t)) {
+			tiposSelecionados = tiposSelecionados.filter(item => item !== t);
+		} else {
+			tiposSelecionados = [...tiposSelecionados, t];
+		}
+	}
+
+	function getButtonText() {
+		if (tiposSelecionados.length === 0) return 'Todos os tipos';
+		if (tiposSelecionados.length === 1) return tiposSelecionados[0];
+		return `${tiposSelecionados[0]} e +${tiposSelecionados.length - 1}`;
+	}
+
+	function selecionarSugestao(sugestao: string) {
+		localizacao = sugestao;
+		isSugestoesOpen = false;
+	}
+
+	function handleSearch(e: Event) {
+		e.preventDefault(); // Svelte 5: substitui o on:submit|preventDefault
+
+		const params = new URLSearchParams();
+		// Convertendo para minúsculo na URL por padrão de web
+		params.set('finalidade', finalidade.toLowerCase());
+
+		if (tiposSelecionados.length > 0) params.set('tipos', tiposSelecionados.join(',').toLowerCase());
+		if (localizacao) params.set('q', localizacao);
+		if (codigo) params.set('cod', codigo); // Novo parâmetro na URL
+
+		goto(`/imoveis?${params.toString()}`);
+	}
+
+	// Fecha os modais se clicar fora
+	function handleOutsideClick(e: MouseEvent) {
+		const target = e.target as Element;
+		if (!target.closest('.dropdown-container')) {
+			isDropdownOpen = false;
+			isSugestoesOpen = false;
+		}
+	}
 </script>
 
-<svelte:window on:click={(e) => {
-  if (isDropdownOpen && !(e.target as Element).closest('.dropdown-container')) {
-    isDropdownOpen = false;
-  }
-}} />
+<svelte:window onclick={handleOutsideClick} />
 
-<div class="bg-white rounded-xl shadow-2xl max-w-5xl mx-auto -mt-10 relative z-20 font-sans dropdown-container">
-  <div class="flex border-b border-gray-100">
-    <button
-      type="button"
-      class="flex-1 py-4 text-center font-bold text-sm uppercase tracking-wider transition-all duration-200 border-r border-gray-100 rounded-tl-xl
-      {finalidade === 'venda' ? 'bg-brand text-white' : 'bg-gray-50 text-gray-500 hover:bg-gray-100'}"
-      on:click={() => finalidade = 'venda'}
-    >
-      Comprar
-    </button>
-    <button
-      type="button"
-      class="flex-1 py-4 text-center font-bold text-sm uppercase tracking-wider transition-all duration-200 rounded-tr-xl
-      {finalidade === 'aluguel' ? 'bg-brand text-white' : 'bg-gray-50 text-gray-500 hover:bg-gray-100'}"
-      on:click={() => finalidade = 'aluguel'}
-    >
-      Alugar
-    </button>
-  </div>
+<div class="dropdown-container relative z-20 mx-auto -mt-10 max-w-6xl rounded-xl bg-white font-sans shadow-2xl">
+	<div class="flex border-b border-gray-100">
+		<button
+			type="button"
+			class="flex-1 rounded-tl-xl border-r border-gray-100 py-4 text-center text-sm font-bold uppercase tracking-wider transition-all duration-200
+      {finalidade === 'Venda' ? 'bg-blue-600 text-white' : 'bg-gray-50 text-gray-500 hover:bg-gray-100'}"
+			onclick={() => (finalidade = 'Venda')}
+		>
+			Comprar
+		</button>
+		<button
+			type="button"
+			class="flex-1 rounded-tr-xl py-4 text-center text-sm font-bold uppercase tracking-wider transition-all duration-200
+      {finalidade === 'Aluguel' ? 'bg-blue-600 text-white' : 'bg-gray-50 text-gray-500 hover:bg-gray-100'}"
+			onclick={() => (finalidade = 'Aluguel')}
+		>
+			Alugar
+		</button>
+	</div>
 
-  <form on:submit|preventDefault={handleSearch} class="p-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
-    <div class="md:col-span-4 space-y-1 relative">
-      <label for="tipo-select" class="text-xs font-bold text-gray-500 uppercase flex items-center gap-1">
-        Tipo de Imóvel
-      </label>
+	<form onsubmit={handleSearch} class="grid grid-cols-1 items-end gap-4 p-6 md:grid-cols-12">
 
-      <button
-        id="tipo-select"
-        type="button"
-        on:click={() => isDropdownOpen = !isDropdownOpen}
-        class="w-full h-12 px-3 border border-gray-300 rounded-lg bg-white text-left flex items-center justify-between hover:border-brand outline-none"
-      >
-        <span class="truncate text-gray-700 block max-w-[90%]">{getButtonText()}</span>
-        <svg class="w-4 h-4 text-gray-500 {isDropdownOpen ? 'rotate-180' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
+		<div class="relative space-y-1 md:col-span-3">
+			<label for="tipo-select" class="flex items-center gap-1 text-xs font-bold uppercase text-gray-500">
+				Tipo de Imóvel
+			</label>
+			<button
+				id="tipo-select"
+				type="button"
+				onclick={() => {
+					isDropdownOpen = !isDropdownOpen;
+					isSugestoesOpen = false;
+				}}
+				class="flex h-12 w-full items-center justify-between rounded-lg border border-gray-300 bg-white px-3 text-left outline-none hover:border-blue-600"
+			>
+				<span class="block max-w-[85%] truncate text-gray-700">{getButtonText()}</span>
+				<svg class="h-4 w-4 text-gray-500 transition-transform {isDropdownOpen ? 'rotate-180' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+				</svg>
+			</button>
 
-      {#if isDropdownOpen}
-        <div class="absolute top-full left-0 w-full mt-2 bg-white border border-gray-100 rounded-xl shadow-xl z-50 max-h-80 overflow-y-auto" transition:slide>
-          {#each gruposTipos as grupo}
-            <div class="px-4 py-2 bg-gray-50 text-[10px] font-bold text-gray-500 uppercase sticky top-0">{grupo.titulo}</div>
-            <div class="p-2">
-              {#each grupo.tipos as t}
-                <label class="flex items-center gap-3 p-2 hover:bg-brand/10 rounded-lg cursor-pointer">
-                  <input type="checkbox" checked={tiposSelecionados.includes(t)} on:change={() => toggleTipo(t)} class="accent-brand" />
-                  <span class="text-sm text-gray-700">{t}</span>
-                </label>
-              {/each}
-            </div>
-          {/each}
-        </div>
-      {/if}
-    </div>
+			{#if isDropdownOpen}
+				<div class="absolute left-0 top-full z-50 mt-2 max-h-80 w-64 overflow-y-auto rounded-xl border border-gray-100 bg-white shadow-xl" transition:slide>
+					{#each gruposTipos as grupo}
+						<div class="sticky top-0 bg-gray-50 px-4 py-2 text-[10px] font-bold uppercase text-gray-500">{grupo.titulo}</div>
+						<div class="p-2">
+							{#each grupo.tipos as t}
+								<label class="flex cursor-pointer items-center gap-3 rounded-lg p-2 hover:bg-blue-50">
+									<input type="checkbox" checked={tiposSelecionados.includes(t)} onchange={() => toggleTipo(t)} class="accent-blue-600" />
+									<span class="text-sm text-gray-700">{t}</span>
+								</label>
+							{/each}
+						</div>
+					{/each}
+				</div>
+			{/if}
+		</div>
 
-    <div class="md:col-span-5 space-y-1">
-      <label for="local" class="text-xs font-bold text-gray-500 uppercase">Localização</label>
-      <input id="local" list="locais-sugestoes" type="text" placeholder="Cidade ou Bairro..." bind:value={localizacao} class="w-full h-12 px-3 border border-gray-300 rounded-lg outline-none focus:border-brand" />
-      <datalist id="locais-sugestoes">
-        {#each sugestoes as s}<option value={s}>{s}</option>{/each}
-      </datalist>
-    </div>
+		<div class="relative space-y-1 md:col-span-4">
+			<label for="local" class="text-xs font-bold uppercase text-gray-500">Localização</label>
+			<input
+				id="local"
+				type="text"
+				placeholder="Cidade ou Bairro..."
+				autocomplete="off"
+				bind:value={localizacao}
+				oninput={() => (isSugestoesOpen = true)}
+				onfocus={() => {
+					isSugestoesOpen = true;
+					isDropdownOpen = false;
+				}}
+				class="h-12 w-full rounded-lg border border-gray-300 px-3 outline-none focus:border-blue-600"
+			/>
 
-    <div class="md:col-span-3">
-      <button type="submit" class="w-full h-12 bg-brand hover:bg-brand-dark text-white font-bold rounded-lg shadow-lg transition-all uppercase">Buscar</button>
-    </div>
-  </form>
+			{#if isSugestoesOpen && sugestoesFiltradas.length > 0}
+				<ul class="absolute left-0 top-full z-50 mt-1 max-h-60 w-full overflow-y-auto rounded-lg border border-gray-200 bg-white py-1 shadow-lg">
+					{#each sugestoesFiltradas as sugestao}
+						<li>
+							<button
+								type="button"
+								class="w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-blue-50"
+								onclick={() => selecionarSugestao(sugestao)}
+							>
+								📍 {sugestao}
+							</button>
+						</li>
+					{/each}
+				</ul>
+			{/if}
+		</div>
+
+		<div class="space-y-1 md:col-span-3">
+			<label for="codigo" class="text-xs font-bold uppercase text-gray-500">Cód. Imóvel</label>
+			<input
+				id="codigo"
+				type="text"
+				placeholder="Ex: casa-paranapunga"
+				bind:value={codigo}
+				onfocus={() => {
+					isDropdownOpen = false;
+					isSugestoesOpen = false;
+				}}
+				class="h-12 w-full rounded-lg border border-gray-300 px-3 outline-none focus:border-blue-600"
+			/>
+		</div>
+
+		<div class="md:col-span-2">
+			<button type="submit" class="h-12 w-full rounded-lg bg-blue-600 font-bold uppercase text-white shadow-lg transition-all hover:bg-blue-700">
+				Buscar
+			</button>
+		</div>
+	</form>
 </div>
