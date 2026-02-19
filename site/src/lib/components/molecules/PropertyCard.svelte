@@ -17,7 +17,7 @@
 
 		<div class="flex flex-1 flex-col p-5">
 			<div class="mb-3 flex items-center justify-between">
-				<span class="rounded-full bg-violet-100 px-3 py-1 text-xs font-bold tracking-wide text-violet-800">
+				<span class="rounded-full bg-indigo-100 px-3 py-1 text-xs font-bold tracking-wide text-indigo-800">
 					{imovel.finalidade}
 				</span>
 				<span class="text-xs font-semibold uppercase tracking-wider text-gray-500">
@@ -25,12 +25,12 @@
 				</span>
 			</div>
 
-			<h3 class="line-clamp-1 text-lg font-bold text-gray-900 transition-colors group-hover:text-violet-700" title={imovel.titulo}>
+			<h3 class="line-clamp-1 text-lg font-bold text-gray-900 transition-colors group-hover:text-indigo-700" title={imovel.titulo}>
 				{imovel.titulo}
 			</h3>
 			<p class="mt-1 text-sm text-gray-500">{imovel.bairro}, {imovel.cidade}</p>
 
-			<div class="mt-4 text-2xl font-black text-violet-700">
+			<div class="mt-4 text-2xl font-black text-indigo-700">
 				{formatarMoeda(imovel.preco)}
 			</div>
 
