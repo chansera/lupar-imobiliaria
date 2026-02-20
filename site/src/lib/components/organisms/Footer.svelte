@@ -65,7 +65,7 @@
 						</svg>
 					</div>
 					<a href={`https://wa.me/55${SITE_INFO.whatsapp.replace(/\D/g, '')}`} target="_blank" class="font-medium hover:text-brand-dark transition-colors">
-						{SITE_INFO.whatsapp}
+						{SITE_INFO.whatsappLabel}
 					</a>
 				</li>
 
@@ -88,7 +88,7 @@
 							<circle cx="12" cy="10" r="3" stroke-linecap="round" stroke-linejoin="round"/>
 						</svg>
 					</div>
-					<span class="mt-1 leading-snug">Av. Exemplo, 123<br/>Três Lagoas - MS</span>
+					<span class="mt-1 leading-snug">{SITE_INFO.endereco}</span>
 				</li>
 			</ul>
 		</div>
