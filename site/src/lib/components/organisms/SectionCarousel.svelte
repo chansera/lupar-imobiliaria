@@ -45,7 +45,7 @@
 			<button
 				class=" rounded-md px-6 py-2 text-sm font-bold transition-all duration-300
         {filtroAtivo === 'residencial'
-					? 'bg-white text-purple-700 shadow-sm'
+					? 'bg-white text-brand shadow-sm'
 					: 'text-gray-500 hover:text-gray-900'}"
 				onclick={() => (filtroAtivo = 'residencial')}
 			>
@@ -54,7 +54,7 @@
 			<button
 				class=" rounded-md px-6 py-2 text-sm font-bold transition-all duration-300
         {filtroAtivo === 'comercial'
-					? 'bg-white text-purple-700 shadow-sm'
+					? 'bg-white text-brand shadow-sm'
 					: 'text-gray-500 hover:text-gray-900'}"
 				onclick={() => (filtroAtivo = 'comercial')}
 			>
