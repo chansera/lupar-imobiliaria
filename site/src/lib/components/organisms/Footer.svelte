@@ -119,7 +119,9 @@
 			<p>&copy; {new Date().getFullYear()} {SITE_INFO.nome}. Todos os direitos reservados.</p>
 
 			<div class="flex items-center gap-1 font-medium">
-				Desenvolvido por <span class="font-bold text-gray-900">Você</span> 🚀
+				Desenvolvido por <span class="font-bold text-gray-900">
+                <a title="Contato Desenvolvedor" href="https://github.com/Csrand ">Csrand</a>
+                </span>
 			</div>
 		</div>
 	</div>
