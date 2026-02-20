@@ -86,7 +86,7 @@
 		<button
 			type="button"
 			class="flex-1 rounded-tl-xl border-r border-gray-100 py-4 text-center text-sm font-bold uppercase tracking-wider transition-all duration-200
-      {finalidade === 'Venda' ? 'bg-purple-600 text-white' : 'bg-gray-50 text-gray-500 hover:bg-gray-100'}"
+      {finalidade === 'Venda' ? 'bg-brand-dark text-white' : 'bg-gray-50 text-gray-500 hover:bg-gray-100'}"
 			onclick={() => (finalidade = 'Venda')}
 		>
 			Comprar
@@ -94,7 +94,7 @@
 		<button
 			type="button"
 			class="flex-1 rounded-tr-xl py-4 text-center text-sm font-bold uppercase tracking-wider transition-all duration-200
-      {finalidade === 'Aluguel' ? 'bg-purple-600 text-white' : 'bg-gray-50 text-gray-500 hover:bg-gray-100'}"
+      {finalidade === 'Aluguel' ? 'bg-brand-dark text-white' : 'bg-gray-50 text-gray-500 hover:bg-gray-100'}"
 			onclick={() => (finalidade = 'Aluguel')}
 		>
 			Alugar
@@ -114,7 +114,7 @@
 					isDropdownOpen = !isDropdownOpen;
 					isSugestoesOpen = false;
 				}}
-				class="flex h-12 w-full items-center justify-between rounded-lg border border-gray-300 bg-white px-3 text-left outline-none hover:border-purple-600"
+				class="flex h-12 w-full items-center justify-between rounded-lg border border-gray-300 bg-white px-3 text-left outline-none hover:border-brand-dark"
 			>
 				<span class="block max-w-[85%] truncate text-gray-700">{getButtonText()}</span>
 				<svg class="h-4 w-4 text-gray-500 transition-transform {isDropdownOpen ? 'rotate-180' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -128,8 +128,8 @@
 						<div class="sticky top-0 bg-gray-50 px-4 py-2 text-[10px] font-bold uppercase text-gray-500">{grupo.titulo}</div>
 						<div class="p-2">
 							{#each grupo.tipos as t}
-								<label class="flex cursor-pointer items-center gap-3 rounded-lg p-2 hover:bg-purple-50">
-									<input type="checkbox" checked={tiposSelecionados.includes(t)} onchange={() => toggleTipo(t)} class="accent-purple-600" />
+								<label class="flex cursor-pointer items-center gap-3 rounded-lg p-2 hover:bg-brand-dark">
+									<input type="checkbox" checked={tiposSelecionados.includes(t)} onchange={() => toggleTipo(t)} class="accent-brand-dark" />
 									<span class="text-sm text-gray-700">{t}</span>
 								</label>
 							{/each}
@@ -152,7 +152,7 @@
 					isSugestoesOpen = true;
 					isDropdownOpen = false;
 				}}
-				class="h-12 w-full rounded-lg border border-gray-300 px-3 outline-none focus:border-purple-600"
+				class="h-12 w-full rounded-lg border border-gray-300 px-3 outline-none focus:border-brand-dark"
 			/>
 
 			{#if isSugestoesOpen && sugestoesFiltradas.length > 0}
@@ -161,7 +161,7 @@
 						<li>
 							<button
 								type="button"
-								class="w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-purple-50"
+								class="w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-brand-dark"
 								onclick={() => selecionarSugestao(sugestao)}
 							>
 								📍 {sugestao}
@@ -183,12 +183,12 @@
 					isDropdownOpen = false;
 					isSugestoesOpen = false;
 				}}
-				class="h-12 w-full rounded-lg border border-gray-300 px-3 outline-none focus:border-purple-600"
+				class="h-12 w-full rounded-lg border border-gray-300 px-3 outline-none focus:border-brand-dark"
 			/>
 		</div>
 
 		<div class="md:col-span-2">
-			<button type="submit" class="h-12 w-full rounded-lg bg-purple-600 font-bold uppercase text-white shadow-lg transition-all hover:bg-purple-700">
+			<button type="submit" class="h-12 w-full rounded-lg bg-brand-dark font-bold uppercase text-white shadow-lg transition-all hover:bg-brand-dark0">
 				Buscar
 			</button>
 		</div>

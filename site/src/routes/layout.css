@@ -9,17 +9,16 @@
   --color-red-600: #dc2626;
   --color-white: #ffffff;
 
-  /* Antes era #3D3C7E (Muito escuro/fosco) */
-  --color-brand: #4C4AB5;
-
-  /* Hover levemente mais escuro */
-  --color-brand-dark: #373592;
+  /* Removidas as quebras de linha para evitar erro de parse */
+  --color-brand: #5A2A87;
+  --color-brand-dark: #3E1960;
 }
 
 @layer base {
   body {
     background-color: var(--color-gray-50);
     color: var(--color-gray-900);
+    /* No v4, você também pode usar a variável direto se preferir */
     font-family: ui-sans-serif, system-ui, sans-serif;
   }
 }

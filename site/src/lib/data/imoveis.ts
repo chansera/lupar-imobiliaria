@@ -25,8 +25,18 @@ export const imoveis: Imovel[] = [
                 isCover: true
             },
             {
-                url: '/assets/images/imoveis/paranapunga/casa1/quarto1.jpeg',
-                alt: 'Quarto 1 da casa',
+                url: '/assets/images/imoveis/paranapunga/casa1/quarto.jpeg',
+                alt: 'Comodo interno',
+                isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/paranapunga/casa1/quarto2.jpeg',
+                alt: 'Quarto 3 da casa',
+                isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/paranapunga/casa1/quarto3.jpeg',
+                alt: 'Quarto 4 da casa',
                 isCover: false
             },
             {
@@ -34,12 +44,36 @@ export const imoveis: Imovel[] = [
                 alt: 'Sala ampla com móveis',
                 isCover: false
             },
-            // Adicione todas as outras imagens seguindo o mesmo padrão
+            {
+                url: '/assets/images/imoveis/paranapunga/casa1/banheiro.jpeg',
+                alt: 'Banheiro',
+                isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/paranapunga/casa1/cozinha.jpeg',
+                alt: 'Cozinha da Casa',
+                isCover: false
+            },
             {
                 url: '/assets/images/imoveis/paranapunga/casa1/garagem.jpeg',
                 alt: 'Garagem coberta',
                 isCover: false
-            }
+            },
+            {
+                url: '/assets/images/imoveis/paranapunga/casa1/corredor.jpeg',
+                alt: 'Corredor de fora',
+                isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/paranapunga/casa1/garagem.jpeg',
+                alt: 'Garagem da Casa',
+                isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/paranapunga/casa1/fundo.jpeg',
+                alt: 'Fundo da Casa',
+                isCover: false
+            },
         ]
     },
     // Repita o padrão para os outros imóveis
