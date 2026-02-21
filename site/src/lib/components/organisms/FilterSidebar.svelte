@@ -54,19 +54,19 @@
 <div class="mb-6 lg:hidden">
 	<button
 		onclick={() => (isMobileOpen = true)}
-		class="flex w-full items-center justify-between rounded-lg border border-gray-300 bg-white px-4 py-3 shadow-sm transition-colors active:bg-gray-50"
+		class="flex w-full items-center justify-between rounded-lg border border-victoria-300 bg-white px-4 py-3 shadow-sm transition-colors active:bg-victoria-50"
 		aria-label="Abrir filtros de imóveis"
 	>
-		<span class="flex items-center gap-2 font-bold text-gray-700">
-			<svg class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+		<span class="flex items-center gap-2 font-bold text-victoria-700">
+			<svg class="h-5 w-5 text-victoria-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
 			</svg>
 			Filtrar Imóveis
 		</span>
 		{#if tiposSelecionados.length > 0 || quartosMin > 0 || banheirosMin > 0}
-			<span class="rounded-full bg-blue-600 px-2 py-1 text-xs font-bold text-white">Ativos</span>
+			<span class="rounded-full bg-victoria-600 px-2 py-1 text-xs font-bold text-white">Ativos</span>
 		{/if}
-		<svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+		<svg class="h-5 w-5 text-victoria-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
 		</svg>
 	</button>
@@ -80,21 +80,21 @@
 		aria-modal="true"
 		aria-labelledby="dialog-title"
 	>
-		<div class="flex shrink-0 items-center justify-between border-b border-gray-100 bg-white px-4 py-4">
+		<div class="flex shrink-0 items-center justify-between border-b border-victoria-100 bg-white px-4 py-4">
 			<button
 				onclick={() => (isMobileOpen = false)}
-				class="-ml-2 p-2 text-gray-500"
+				class="-ml-2 p-2 text-victoria-500"
 				aria-label="Fechar filtros"
 			>
 				<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
 				</svg>
 			</button>
-			<h2 id="dialog-title" class="text-lg font-bold text-gray-900">Filtros</h2>
+			<h2 id="dialog-title" class="text-lg font-bold text-victoria-900">Filtros</h2>
 
 			<button
 				onclick={limpar}
-				class="text-sm font-bold text-blue-600 hover:underline"
+				class="text-sm font-bold text-victoria-600 hover:underline"
 				aria-label="Limpar todos os filtros"
 			>
 				Limpar
@@ -112,10 +112,10 @@
 			/>
 		</div>
 
-		<div class="shrink-0 border-t border-gray-100 bg-white p-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
+		<div class="shrink-0 border-t border-victoria-100 bg-white p-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
 			<button
 				onclick={() => (isMobileOpen = false)}
-				class="w-full rounded-lg bg-blue-600 py-4 font-bold text-white shadow-lg transition-all hover:bg-blue-700 active:scale-[0.98]"
+				class="w-full rounded-lg bg-victoria-600 py-4 font-bold text-white shadow-lg transition-all hover:bg-victoria-700 active:scale-[0.98]"
 				aria-label="Aplicar filtros e ver {totalResultados} imóveis"
 			>
 				Ver {totalResultados} {totalResultados === 1 ? 'Imóvel' : 'Imóveis'}
@@ -124,9 +124,9 @@
 	</div>
 {/if}
 
-<div class="sticky top-24 hidden max-h-[calc(100vh-120px)] flex-col rounded-xl border border-gray-100 bg-white shadow-sm lg:flex">
-	<div class="z-10 flex items-center justify-between rounded-t-xl border-b border-gray-100 bg-white p-4">
-		<h2 class="flex items-center gap-2 text-base font-bold text-gray-900">Filtros</h2>
+<div class="sticky top-24 hidden max-h-[calc(100vh-120px)] flex-col rounded-xl border border-victoria-100 bg-white shadow-sm lg:flex">
+	<div class="z-10 flex items-center justify-between rounded-t-xl border-b border-victoria-100 bg-white p-4">
+		<h2 class="flex items-center gap-2 text-base font-bold text-victoria-900">Filtros</h2>
 
 		{#if tiposSelecionados.length > 0 || quartosMin > 0 || banheirosMin > 0}
 			<button

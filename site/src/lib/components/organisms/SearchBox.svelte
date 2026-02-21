@@ -82,11 +82,11 @@
 <svelte:window onclick={handleOutsideClick} />
 
 <div class="dropdown-container relative z-20 mx-auto -mt-10 max-w-6xl rounded-xl bg-white font-sans shadow-2xl">
-	<div class="flex border-b border-gray-100">
+	<div class="flex border-b border-victoria-100">
 		<button
 			type="button"
-			class="flex-1 rounded-tl-xl border-r border-gray-100 py-4 text-center text-sm font-bold uppercase tracking-wider transition-all duration-200
-      {finalidade === 'Venda' ? 'bg-brand-dark text-white' : 'bg-gray-50 text-gray-500 hover:bg-gray-100'}"
+			class="flex-1 rounded-tl-xl border-r border-victoria-100 py-4 text-center text-sm font-bold uppercase tracking-wider transition-all duration-200
+      {finalidade === 'Venda' ? 'bg-victoria-800 text-white' : 'bg-victoria-50 text-victoria-500 hover:bg-victoria-100'}"
 			onclick={() => (finalidade = 'Venda')}
 		>
 			Comprar
@@ -94,7 +94,7 @@
 		<button
 			type="button"
 			class="flex-1 rounded-tr-xl py-4 text-center text-sm font-bold uppercase tracking-wider transition-all duration-200
-      {finalidade === 'Aluguel' ? 'bg-brand-dark text-white' : 'bg-gray-50 text-gray-500 hover:bg-gray-100'}"
+      {finalidade === 'Aluguel' ? 'bg-victoria-800 text-white' : 'bg-victoria-50 text-victoria-500 hover:bg-victoria-100'}"
 			onclick={() => (finalidade = 'Aluguel')}
 		>
 			Alugar
@@ -104,7 +104,7 @@
 	<form onsubmit={handleSearch} class="grid grid-cols-1 items-end gap-4 p-6 md:grid-cols-12">
 
 		<div class="relative space-y-1 md:col-span-3">
-			<label for="tipo-select" class="flex items-center gap-1 text-xs font-bold uppercase text-gray-500">
+			<label for="tipo-select" class="flex items-center gap-1 text-xs font-bold uppercase text-victoria-500">
 				Tipo de Imóvel
 			</label>
 			<button
@@ -114,23 +114,23 @@
 					isDropdownOpen = !isDropdownOpen;
 					isSugestoesOpen = false;
 				}}
-				class="flex h-12 w-full items-center justify-between rounded-lg border border-gray-300 bg-white px-3 text-left outline-none hover:border-brand-dark"
+				class="flex h-12 w-full items-center justify-between rounded-lg border border-victoria-300 bg-white px-3 text-left outline-none hover:border-victoria-800"
 			>
-				<span class="block max-w-[85%] truncate text-gray-700">{getButtonText()}</span>
-				<svg class="h-4 w-4 text-gray-500 transition-transform {isDropdownOpen ? 'rotate-180' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+				<span class="block max-w-[85%] truncate text-victoria-700">{getButtonText()}</span>
+				<svg class="h-4 w-4 text-victoria-500 transition-transform {isDropdownOpen ? 'rotate-180' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 					<path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
 				</svg>
 			</button>
 
 			{#if isDropdownOpen}
-				<div class="absolute left-0 top-full z-50 mt-2 max-h-80 w-64 overflow-y-auto rounded-xl border border-gray-100 bg-white shadow-xl" transition:slide>
+				<div class="absolute left-0 top-full z-50 mt-2 max-h-80 w-64 overflow-y-auto rounded-xl border border-victoria-100 bg-white shadow-xl" transition:slide>
 					{#each gruposTipos as grupo}
-						<div class="sticky top-0 bg-gray-50 px-4 py-2 text-[10px] font-bold uppercase text-gray-500">{grupo.titulo}</div>
+						<div class="sticky top-0 bg-victoria-50 px-4 py-2 text-[10px] font-bold uppercase text-victoria-500">{grupo.titulo}</div>
 						<div class="p-2">
 							{#each grupo.tipos as t}
-								<label class="flex cursor-pointer items-center gap-3 rounded-lg p-2 hover:bg-brand-dark">
-									<input type="checkbox" checked={tiposSelecionados.includes(t)} onchange={() => toggleTipo(t)} class="accent-brand-dark" />
-									<span class="text-sm text-gray-700">{t}</span>
+								<label class="flex cursor-pointer items-center gap-3 rounded-lg p-2 hover:bg-victoria-800">
+									<input type="checkbox" checked={tiposSelecionados.includes(t)} onchange={() => toggleTipo(t)} class="accent-victoria-800" />
+									<span class="text-sm text-victoria-700">{t}</span>
 								</label>
 							{/each}
 						</div>
@@ -140,7 +140,7 @@
 		</div>
 
 		<div class="relative space-y-1 md:col-span-4">
-			<label for="local" class="text-xs font-bold uppercase text-gray-500">Localização</label>
+			<label for="local" class="text-xs font-bold uppercase text-victoria-500">Localização</label>
 			<input
 				id="local"
 				type="text"
@@ -152,16 +152,16 @@
 					isSugestoesOpen = true;
 					isDropdownOpen = false;
 				}}
-				class="h-12 w-full rounded-lg border border-gray-300 px-3 outline-none focus:border-brand-dark"
+				class="h-12 w-full rounded-lg border border-victoria-300 px-3 outline-none focus:border-victoria-800"
 			/>
 
 			{#if isSugestoesOpen && sugestoesFiltradas.length > 0}
-				<ul class="absolute left-0 top-full z-50 mt-1 max-h-60 w-full overflow-y-auto rounded-lg border border-gray-200 bg-white py-1 shadow-lg">
+				<ul class="absolute left-0 top-full z-50 mt-1 max-h-60 w-full overflow-y-auto rounded-lg border border-victoria-200 bg-white py-1 shadow-lg">
 					{#each sugestoesFiltradas as sugestao}
 						<li>
 							<button
 								type="button"
-								class="w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-brand-dark"
+								class="w-full px-4 py-2 text-left text-sm text-victoria-700 hover:bg-victoria-800"
 								onclick={() => selecionarSugestao(sugestao)}
 							>
 								📍 {sugestao}
@@ -173,22 +173,22 @@
 		</div>
 
 		<div class="space-y-1 md:col-span-3">
-			<label for="codigo" class="text-xs font-bold uppercase text-gray-500">Cód. Imóvel</label>
+			<label for="codigo" class="text-xs font-bold uppercase text-victoria-500">Cód. Imóvel</label>
 			<input
 				id="codigo"
 				type="text"
+				class="h-12 w-full rounded-lg border border-victoria-300 px-3 outline-none focus:border-victoria-800"
 				placeholder="Ex: casa-paranapunga"
 				bind:value={codigo}
 				onfocus={() => {
 					isDropdownOpen = false;
 					isSugestoesOpen = false;
 				}}
-				class="h-12 w-full rounded-lg border border-gray-300 px-3 outline-none focus:border-brand-dark"
 			/>
 		</div>
 
 		<div class="md:col-span-2">
-			<button type="submit" class="h-12 w-full rounded-lg bg-brand-dark font-bold uppercase text-white shadow-lg transition-all hover:bg-brand-dark0">
+			<button type="submit" class="h-12 w-full rounded-lg bg-victoria-800 font-bold uppercase text-white shadow-lg transition-all hover:bg-victoria-8000">
 				Buscar
 			</button>
 		</div>

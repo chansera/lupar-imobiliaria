@@ -74,16 +74,16 @@
 	<title>Lupar | Imóveis</title>
 </svelte:head>
 
-<div class="min-h-screen bg-gray-50 py-8 font-sans">
+<div class="min-h-screen bg-victoria-50 py-8 font-sans">
 	<div class="container mx-auto px-4">
 		<div class="mb-8">
-			<h1 class="text-3xl font-bold text-gray-900">
+			<h1 class="text-3xl font-bold text-victoria-900">
 				Imóveis para {finalidade === 'Venda' ? 'Comprar' : 'Alugar'}
 			</h1>
-			<p class="mt-2 text-gray-500">
+			<p class="mt-2 text-victoria-500">
 				{imoveisFiltrados.length} {imoveisFiltrados.length === 1 ? 'imóvel encontrado' : 'imóveis encontrados'}
 				{#if localizacaoBusca}
-					em <strong class="text-gray-700">{localizacaoBusca}</strong>
+					em <strong class="text-victoria-700">{localizacaoBusca}</strong>
 				{/if}
 			</p>
 		</div>
@@ -109,9 +109,9 @@
 						{/each}
 					</div>
 				{:else}
-					<div class="flex h-96 flex-col items-center justify-center rounded-xl border border-dashed border-gray-200 bg-white p-12 text-center">
-						<h3 class="text-xl font-bold text-gray-900">Nenhum imóvel encontrado.</h3>
-						<p class="mt-2 text-sm text-gray-500">Tente ajustar sua busca ou remover alguns filtros.</p>
+					<div class="flex h-96 flex-col items-center justify-center rounded-xl border border-dashed border-victoria-200 bg-white p-12 text-center">
+						<h3 class="text-xl font-bold text-victoria-900">Nenhum imóvel encontrado.</h3>
+						<p class="mt-2 text-sm text-victoria-500">Tente ajustar sua busca ou remover alguns filtros.</p>
 						<button class="mt-4 font-bold text-blue-600 hover:underline" onclick={resetAll}>
 							Limpar Filtros
 						</button>
