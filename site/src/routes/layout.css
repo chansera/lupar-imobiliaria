@@ -1,24 +1,33 @@
 @import "tailwindcss";
 
 @theme {
-  --color-gray-50: #f9fafb;
-  --color-gray-100: #f3f4f6;
-  --color-gray-300: #d1d5db;
-  --color-gray-500: #6b7280;
-  --color-gray-900: #111827;
-  --color-red-600: #dc2626;
-  --color-white: #ffffff;
-
-  /* Removidas as quebras de linha para evitar erro de parse */
-  --color-brand: #5A2A87;
-  --color-brand-dark: #3E1960;
+    --color-gray-50: #f9fafb;
+    --color-gray-100: #f3f4f6;
+    --color-gray-300: #d1d5db;
+    --color-gray-500: #6b7280;
+    --color-gray-900: #111827;
+    --color-red-600: #dc2626;
+    --color-white: #ffffff;
+    --color-brand: #474798;
+    --color-brand-dark: #3E1960;
+    --color-victoria-50: #f3f4fb;
+    --color-victoria-100: #e4e7f5;
+    --color-victoria-200: #ced5ef;
+    --color-victoria-300: #adb9e3;
+    --color-victoria-400: #8596d5;
+    --color-victoria-500: #6876c9;
+    --color-victoria-600: #555dbb;
+    --color-victoria-700: #4a4dab;
+    --color-victoria-800: #474798;
+    --color-victoria-900: #383a70;
+    --color-victoria-950: #262645;
 }
 
 @layer base {
-  body {
-    background-color: var(--color-gray-50);
-    color: var(--color-gray-900);
-    /* No v4, você também pode usar a variável direto se preferir */
-    font-family: ui-sans-serif, system-ui, sans-serif;
-  }
+    body {
+        background-color: var(--color-gray-50);
+        color: var(--color-gray-900);
+        /* No v4, você também pode usar a variável direto se preferir */
+        font-family: ui-sans-serif, system-ui, sans-serif;
+    }
 }

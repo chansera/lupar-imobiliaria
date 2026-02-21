@@ -35,18 +35,18 @@
 <div class="container mx-auto px-4">
 	<div class="mb-8 flex flex-col justify-between gap-6 md:flex-row md:items-end">
 		<div>
-			<h2 class="text-2xl font-bold text-gray-900 md:text-3xl">{title}</h2>
+			<h2 class="text-2xl font-bold text-victoria-900 md:text-3xl">{title}</h2>
 			{#if subtitle}
-				<p class="mt-1 text-gray-500">{subtitle}</p>
+				<p class="mt-1 text-victoria-500">{subtitle}</p>
 			{/if}
 		</div>
 
-		<div class="flex self-start rounded-lg bg-gray-100 p-1 md:self-auto">
+		<div class="flex self-start rounded-lg bg-victoria-100 p-1 md:self-auto">
 			<button
 				class=" rounded-md px-6 py-2 text-sm font-bold transition-all duration-300
         {filtroAtivo === 'residencial'
-					? 'bg-white text-brand shadow-sm'
-					: 'text-gray-500 hover:text-gray-900'}"
+					? 'bg-white text-victoria-800 shadow-sm'
+					: 'text-victoria-500 hover:text-victoria-900'}"
 				onclick={() => (filtroAtivo = 'residencial')}
 			>
 				Residencial
@@ -54,8 +54,8 @@
 			<button
 				class=" rounded-md px-6 py-2 text-sm font-bold transition-all duration-300
         {filtroAtivo === 'comercial'
-					? 'bg-white text-brand shadow-sm'
-					: 'text-gray-500 hover:text-gray-900'}"
+					? 'bg-white text-victoria-800 shadow-sm'
+					: 'text-victoria-500 hover:text-victoria-900'}"
 				onclick={() => (filtroAtivo = 'comercial')}
 			>
 				Comercial
@@ -75,7 +75,7 @@
 		<div class="mt-10 flex justify-center">
 			<a
 				href={linkVerMais}
-				class="inline-flex items-center gap-2 rounded-full border border-gray-200 px-6 py-3 font-bold text-gray-600 transition-all hover:border-blue-600 hover:text-blue-600"
+				class="inline-flex items-center gap-2 rounded-full border border-victoria-200 px-6 py-3 font-bold text-victoria-600 transition-all hover:border-blue-600 hover:text-blue-600"
 			>
 				Ver todos em {title}
 				<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -84,8 +84,8 @@
 			</a>
 		</div>
 	{:else}
-		<div class="rounded-xl border border-dashed border-gray-200 bg-gray-50 py-12 text-center">
-			<p class="text-gray-500">Nenhum imóvel {filtroAtivo} encontrado nesta categoria no momento.</p>
+		<div class="rounded-xl border border-dashed border-victoria-200 bg-victoria-50 py-12 text-center">
+			<p class="text-victoria-500">Nenhum imóvel {filtroAtivo} encontrado nesta categoria no momento.</p>
 		</div>
 	{/if}
 </div>
