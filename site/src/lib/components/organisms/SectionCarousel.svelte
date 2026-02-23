@@ -75,7 +75,7 @@
 		<div class="mt-10 flex justify-center">
 			<a
 				href={linkVerMais}
-				class="inline-flex items-center gap-2 rounded-full border border-victoria-200 px-6 py-3 font-bold text-victoria-600 transition-all hover:border-blue-600 hover:text-blue-600"
+				class="inline-flex items-center gap-2 rounded-full border border-victoria-200 px-6 py-3 font-bold text-victoria-600 transition-all hover:border-victoria-600 hover:text-victoria-600"
 			>
 				Ver todos em {title}
 				<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
