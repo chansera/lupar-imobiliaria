@@ -120,7 +120,7 @@
 
 			<div class="flex items-center gap-1 font-medium">
 				Desenvolvido por <span class="font-bold text-victoria-150">
-                <a title="Contato Desenvolvedor" href="https://github.com/Csrand ">Csrand</a>
+                <a target="_blank" title="Contato Desenvolvedor" href="https://github.com/Csrand ">Csrand</a>
                 </span>
 			</div>
 		</div>
