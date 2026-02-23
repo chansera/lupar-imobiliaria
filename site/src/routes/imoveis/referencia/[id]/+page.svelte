@@ -43,7 +43,7 @@
 				sizes="100vw"
 			/>
 		{/if}
-		<div class="absolute inset-0 bg-gradient-to-t from-victoria-900 via-victoria-900/20 to-transparent"></div>
+		<div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent"></div>
 
 		<div class="absolute bottom-0 left-0 w-full p-6 pb-16 md:p-12 md:pb-20">
 			<div class="container mx-auto">

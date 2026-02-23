@@ -2,7 +2,7 @@
 	import { SITE_INFO, SITE_ROUTES } from '$lib/constants';
 	import { page } from '$app/state';
 
-	import logoImg from '$lib/assets/logo.png?enhanced';
+	import logoImg from '/static/assets/logo.png?enhanced';
 
 	let currentPath = $derived(page.url.pathname);
 
