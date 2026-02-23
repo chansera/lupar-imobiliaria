@@ -11,16 +11,17 @@
     --color-brand: #474798;
     --color-brand-dark: #3E1960;
     --color-victoria-50: #f3f4fb;
-    --color-victoria-100: #e4e7f5;
-    --color-victoria-200: #ced5ef;
-    --color-victoria-300: #adb9e3;
-    --color-victoria-400: #8596d5;
-    --color-victoria-500: #6876c9;
-    --color-victoria-600: #555dbb;
-    --color-victoria-700: #4a4dab;
-    --color-victoria-800: #474798;
-    --color-victoria-900: #383a70;
-    --color-victoria-950: #262645;
+    --color-victoria-100: #e3e7f6;
+    --color-victoria-200: #cdd5f0;
+    --color-victoria-300: #aab8e6;
+    --color-victoria-400: #8295d8;
+    --color-victoria-500: #6473cd;
+    --color-victoria-600: #5159bf;
+    --color-victoria-700: #4649af;
+    --color-victoria-800: #44449d;
+    --color-victoria-900: #363772;
+    --color-victoria-950: #242447;
+
 }
 
 @layer base {
