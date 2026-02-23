@@ -1,7 +1,7 @@
 <script lang="ts">
  import { slide } from 'svelte/transition';
  import { SITE_INFO, SITE_ROUTES,ACTIVE_PATH_PATTERNS } from '$lib/constants';
- import logoImg from '$lib/assets/logo.webp';
+ import logoImg from '/static/assets/logo.png?enhanced';
 
  let {isMenuOpen = false} = $props();
 
@@ -19,13 +19,9 @@
     <div class="container mx-auto px-4">
         <div class="flex items-center justify-between h-20">
 
-            <a href="/" class=" flex items-center gap-2.5 lg:ml-20" onclick={closeMenu}>
-                <img
-                    src={logoImg}
-                    alt={SITE_INFO.nome}
-                    class="h-20 w-auto object-contain ml-2"
-                />
-            </a>
+			<a href="/" title="Hero Banner with Lupar logo " class=" inline-block transition-transform hover:scale-105">
+				<enhanced:img src={logoImg} alt={SITE_INFO.nome} class="h-20 w-auto object-contain" />
+			</a>
 
             <nav class="hidden md:flex items-center gap-8 ">
                 {#each SITE_ROUTES as link}
