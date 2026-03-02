@@ -19,7 +19,7 @@
     <div class="container mx-auto px-4">
         <div class="flex items-center justify-between h-20">
 
-			<a href="/" title="Hero Banner with Lupar logo " class=" inline-block transition-transform hover:scale-105">
+			<a href="/" title="Logo da empresa Lupar" class=" inline-block transition-transform hover:scale-105">
 				<enhanced:img src={logoImg} alt={SITE_INFO.nome} class="h-20 w-auto object-contain" />
 			</a>
 
