@@ -1,6 +1,6 @@
 <script lang="ts">
   import PropertyCard from '$lib/components/molecules/PropertyCard.svelte';
-  import type { Imovel } from '$lib/types/Property';
+  import type { Imovel } from '$lib/types/Imovel';
 
   // Recebe a lista de imóveis
   export let items: Imovel[] = [];
@@ -15,7 +15,7 @@
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    {#each items as item (item.id)}
+    {#each items as item (item.cod)}
       <PropertyCard imovel={item} />
     {/each}
   </div>

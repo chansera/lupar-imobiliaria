@@ -56,7 +56,7 @@ export const imoveis: Imovel[] = [
             },
             {
                 url: '/assets/images/imoveis/paranapunga/casa1/interior.jpeg',
-                alt: 'Primeiro quarto',
+                alt: 'primeiro quarto ',
                 isCover: false
             },
             {
@@ -246,9 +246,9 @@ export const imoveis: Imovel[] = [
         ]
     },
     {
-        cod: 'casa-vila-nova-150k',
-        titulo: 'Casa à Venda na Vila Nova (150k)',
-        slug: 'casa-vila-nova-150k',
+        cod: 'casa-vila-nova',
+        titulo: 'Casa à Venda na Vila Nova',
+        slug: 'casa-vila-nova',
         preco: 150_000,
         tipo: 'Casa',
         finalidade: 'Venda',
@@ -268,39 +268,260 @@ export const imoveis: Imovel[] = [
         ]
     },
     {
-        cod: 'casa-vila-nova-300k',
-        titulo: 'Casa à Venda na Vila Nova (300k)',
-        slug: 'casa-vila-nova-300k',
-        preco: 300_000,
+        cod: 'casa-interlagos',
+        titulo: 'Casa à Venda no Interlagos',
+        slug: 'casa-interlagos',
+        preco: 220_000,
         tipo: 'Casa',
         finalidade: 'Venda',
-        bairro: 'Vila Nova',
         cidade: 'Três Lagoas',
+        bairro: 'Interlagos',
+        quartos: 2,
+        banheiros: 2,
+        descricao: `• 01 sala\n• 02 quartos\n• 02 Banheiros\n• 01 Cozinha`,
+        imagens: [
+            {
+                url: '/assets/images/imoveis/interlagos/casa1/capa.jpg',
+                alt: 'Casa no Interlagos - Vista frontal',
+                isCover: true
+            }
+        ]
+    },
+    {
+        cod: 'terreno-santos-dumont',
+        titulo: 'Terreno à Venda no Santos Dumont',
+        slug: 'terreno-santos-dumont',
+        preco: 320_000,
+        tipo: 'Terreno',
+        finalidade: 'Venda',
+        cidade: 'Três Lagoas',
+        bairro: 'Santos Dumont',
+        areaTotal: 625,
+        dimensao: '12,5 x 50',
+        descricao: `• Terreno medindo 12,5 x 50\n• Área total de 625 m²`,
+        imagens: [
+            {
+                url: '/assets/images/imoveis/santos-dumont/terrenos/terreno-1/capa.jpg',
+                alt: 'Terreno no Santos Dumont - Vista do local',
+                isCover: true
+            }
+        ]
+    },
+    {
+        cod: 'apt-centro',
+        titulo: 'Apartamento à Venda no Centro',
+        slug: 'apt-centro',
+        preco: 750_000,
+        tipo: 'Apartamento',
+        finalidade: 'Venda',
+        cidade: 'Três Lagoas',
+        bairro: 'Centro',
+        quartos: 3,
+        suites: 1,
+        banheiros: 1,
+        vagas: 2,
+        descricao: `• 03 quartos, sendo 01 suíte\n• 01 Banheiro social\n• 01 lavabo\n• Sala\n• Cozinha\n• Sala de jantar\n• Lavanderia\n• 2 Vagas de garagem`,
+        imagens: [
+            {
+                url: '/assets/images/imoveis/centro/apartamentos/apt-1/capa.jpg',
+                alt: 'Apartamento no Centro - Vista frontal',
+                isCover: true
+            },
+            {
+                url: '/assets/images/imoveis/centro/apartamentos/apt-1/sala.jpeg',
+                alt: 'Sala de estar',
+                isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/centro/apartamentos/apt-1/cozinha.jpeg',
+                alt: 'Cozinha',
+                isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/centro/apartamentos/apt-1/quarto.jpeg',
+                alt: 'Quarto principal',
+                isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/centro/apartamentos/apt-1/quarto2.jpeg',
+                alt: 'Segundo quarto',
+                isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/centro/apartamentos/apt-1/suite.jpeg',
+                alt: 'Suíte',
+                isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/centro/apartamentos/apt-1/banheiro.jpeg',
+                alt: 'Banheiro social',
+                isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/centro/apartamentos/apt-1/banheiro suite.jpeg',
+                alt: 'Banheiro da suíte',
+                isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/centro/apartamentos/apt-1/piscina.jpeg',
+                alt: 'Área de piscina',
+                isCover: false
+            }
+        ]
+    },
+    {
+        cod: 'rancho-retiro-palmeiras',
+        titulo: 'Rancho à Venda no Retiro das Palmeiras',
+        slug: 'rancho-retiro-palmeiras',
+        preco: 0, // TODO: preço não informado na mensagem do WhatsApp
+        tipo: 'Rancho', // ⚠️ Ver observação abaixo sobre tipagem
+        finalidade: 'Venda',
+        cidade: 'Três Lagoas',
+        bairro: 'Retiro das Palmeiras',
+        quartos: 1, // TODO: confirmar se há mais quartos além da suíte
+        suites: 1,
+        banheiros: 2,
+        areaConstruida: 200,
+        areaTotal: 2000,
+        dimensao: '20 x 100',
+        descricao: `• 01 Suíte\n• 02 Banheiros Externos\n• Sala\n• Cozinha\n• Área Gourmet\n• Piscina\n• Portaria 24h`,
+        imagens: [
+            {
+                url: '/assets/images/imoveis/ranchos/rancho-retiro-palmeiras/capa.jpg',
+                alt: 'Rancho Retiro das Palmeiras - Vista frontal',
+                isCover: true
+            },
+            {
+                url: '/assets/images/imoveis/ranchos/rancho-retiro-palmeiras/churrasqueira.jpg',
+                alt: 'Área gourmet com churrasqueira',
+                isCover: false
+            }
+        ]
+    },
+    {
+        cod: 'casa-sao-carlos',
+        titulo: 'Casa para Venda no São Carlos',
+        slug: 'casa-sao-carlos',
+        preco: 280_000,
+        tipo: 'Casa',
+        finalidade: 'Venda', // ⚠️ Ver observação sobre "Locação e Venda" abaixo
+        cidade: 'Três Lagoas',
+        bairro: 'São Carlos',
+        quartos: 4,
+        suites: 1,
+        banheiros: 2,
+        vagas: 1, // Inferido da "Garagem coberta"
+        areaConstruida: 0, // TODO: informar quando disponível
+        descricao: `• 01 sala\n• 04 quartos, sendo uma suíte\n• 02 Banheiros\n• 01 Cozinha\n• Garagem coberta\n• Disponível para locação e venda`,
+        imagens: [
+            {
+                url: '/assets/images/imoveis/sao-carlos/casa1/capa.jpg',
+                alt: 'Casa no São Carlos - Vista frontal',
+                isCover: true
+            },
+            {
+                url: '/assets/images/imoveis/sao-carlos/casa1/suite.jpeg',
+                alt: 'Suíte',
+                isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/sao-carlos/casa1/quarto.jpeg',
+                alt: 'Quarto',
+                isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/sao-carlos/casa1/cozinha.jpeg',
+                alt: 'Cozinha',
+                isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/sao-carlos/casa1/cozinha-angulo2.jpeg',
+                alt: 'Cozinha - ângulo 2',
+                isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/sao-carlos/casa1/area-lazer.jpeg',
+                alt: 'Área de lazer',
+                isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/sao-carlos/casa1/fundos-quintal.jpeg',
+                alt: 'Fundos e quintal',
+                isCover: false
+            }
+        ]
+    },
+    {
+        cod: 'terrenos-vila-haro',
+        titulo: '5 Terrenos à Venda na Vila Haro',
+        slug: 'terrenos-vila-haro',
+        preco: 55_000,
+        tipo: 'Terreno',
+        finalidade: 'Venda',
+        cidade: 'Três Lagoas',
+        bairro: 'Vila Haro',
+        areaTotal: 324, // Valor base (padrão)
+        dimensao: '12 x 27 (324m²) ou 14 x 27 (378m² esquina)',
+        descricao: `• 5 terrenos disponíveis\n• 12 x 27 = 324m² (padrão)\n• 14 x 27 = 378m² (esquina)\n• Valor: R$ 55.000,00 cada`,
+        imagens: [
+            {
+                url: '/assets/images/imoveis/vila-haro/terrenos/5-terrenos/5-terrenos-capa.jpeg',
+                alt: 'Terrenos na Vila Haro - Vista do local',
+                isCover: true
+            }
+        ]
+    },
+    {
+        cod: 'terreno-village-do-lago',
+        titulo: 'Terreno à Venda no Village do Lago',
+        slug: 'terreno-village-do-lago',
+        preco: 230_000,
+        tipo: 'Terreno',
+        finalidade: 'Venda',
+        cidade: 'Três Lagoas',
+        bairro: 'Village do Lago',
+        areaTotal: 366,
+        descricao: `• Terreno medindo 366 m²\n• Condomínio Village do Lago`,
+        imagens: [
+            {
+                url: '/assets/images/imoveis/condominios/village-de-lago/terreno-venda/capa.jpg',
+                alt: 'Terreno no Village do Lago - Vista do local',
+                isCover: true
+            }
+        ]
+    },
+    {
+        cod: 'casa-vila-nova-aluguel',
+        titulo: 'Casa para Locação na Vila Nova',
+        slug: 'casa-vila-nova-aluguel',
+        preco: 1_500,
+        tipo: 'Casa',
+        finalidade: 'Aluguel',
+        cidade: 'Três Lagoas',
+        bairro: 'Vila Nova',
         quartos: 3,
         banheiros: 2,
-        vagas: 1,
-        areaTotal: 250,
-        areaConstruida: 100,
-        descricao: `• 03 quartos\n• 02 Banheiros\n• 01 Cozinha\n• Sala\n• Lavanderia\n• Garagem coberta`,
+        vagas: 1, // Inferido de "Garagem coberta"
+        descricao: `• 03 quartos\n• 02 Banheiros\n• 01 Cozinha\n• Sala\n• Lavanderia\n• Garagem coberta\n\n🔑 Lupar Imobiliária\n📱 (67) 98467-9017 | ☎️ (67) 3521-3520\n📍 Rua Oscar Guimarães, 1067, Centro`,
         imagens: [
             {
                 url: '/assets/images/imoveis/vila-nova/casa2/capa.jpeg',
-                alt: 'Casa na Vila Nova 300k - Vista frontal',
+                alt: 'Casa na Vila Nova para Aluguel - Vista frontal',
                 isCover: true
             },
             {
                 url: '/assets/images/imoveis/vila-nova/casa2/sala.jpeg',
-                alt: 'Sala da casa',
+                alt: 'Sala de estar',
                 isCover: false
             },
             {
                 url: '/assets/images/imoveis/vila-nova/casa2/cozinha.jpeg',
-                alt: 'Cozinha da casa',
+                alt: 'Cozinha',
                 isCover: false
             },
             {
                 url: '/assets/images/imoveis/vila-nova/casa2/cozinha2.jpeg',
-                alt: 'Cozinha - ângulo alternativo',
+                alt: 'Cozinha - ângulo 2',
                 isCover: false
             },
             {
@@ -319,15 +540,15 @@ export const imoveis: Imovel[] = [
                 isCover: false
             },
             {
-                url: '/assets/images/imoveis/vila-nova/casa2/quintal.jpeg',
-                alt: 'Quintal',
-                isCover: false
-            },
-            {
                 url: '/assets/images/imoveis/vila-nova/casa2/areaExterna.jpeg',
                 alt: 'Área externa',
                 isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/vila-nova/casa2/quintal.jpeg',
+                alt: 'Quintal',
+                isCover: false
             }
         ]
-    }
+    },
 ];

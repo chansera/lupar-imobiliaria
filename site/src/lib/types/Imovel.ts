@@ -4,7 +4,7 @@ import type { ImovelImage } from "./Image";
 export type Finalidade = 'Venda' | 'Aluguel';
 
 // 1. Fragmentamos os tipos por domínio
-export type TipoResidencial = 'Casa' | 'Apartamento';
+export type TipoResidencial = 'Casa' | 'Apartamento' | 'Rancho';
 export type TipoComercial = 'Salão Comercial' | 'Barracão';
 export type TipoTerreno = 'Terreno';
 
@@ -32,21 +32,23 @@ export interface ImovelResidencial extends ImovelBase {
     suites?: number;
     banheiros: number;
     vagas?: number;
-    areaConstruida: number;
+    areaConstruida?: number;
     areaTotal?: number;
+    dimensao?: string;
 }
 
 export interface ImovelComercial extends ImovelBase {
     tipo: TipoComercial; // Usando o tipo fragmentado aqui
     banheiros?: number;
     vagas?: number;
-    areaConstruida: number;
-    areaTotal: number;
+    areaConstruida?: number;
+    areaTotal?: number;
+    dimensao?: string;
 }
 
 export interface ImovelTerreno extends ImovelBase {
     tipo: TipoTerreno; // Usando o tipo fragmentado aqui
-    areaTotal: number;
+    areaTotal?: number;
     dimensao?: string;
 }
 

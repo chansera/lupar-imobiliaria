@@ -2,7 +2,7 @@ export const SITE_INFO = {
     nome: 'Lupar Imobiliária',
     instagram: 'https://www.instagram.com/luparimobiliaria/',
     whatsapp: '5567984679017', // Número para a API (sem espaços)
-    whatsappLabel: '(67) 984679017',
+    whatsappLabel: '(67) 98467-9017',
     telefoneFixo: '(67) 3521-3520',
     creci: 'MS-5430J',
     celularVisual: '(67) 98467-9017', // Para mostrar na tela
