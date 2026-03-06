@@ -1,6 +1,6 @@
 <script lang="ts">
 
-	import heroBg from '/static/assets/banner-home.png?enhanced';
+	import heroBg from '/src/assets/banner-home.webp?enhanced';
 
 	let {
 		title = "Encontre seu imóvel ideal",

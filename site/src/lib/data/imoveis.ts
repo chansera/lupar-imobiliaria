@@ -373,7 +373,7 @@ export const imoveis: Imovel[] = [
         cod: 'rancho-retiro-palmeiras',
         titulo: 'Rancho à Venda no Retiro das Palmeiras',
         slug: 'rancho-retiro-palmeiras',
-        preco: 0, // TODO: preço não informado na mensagem do WhatsApp
+        preco: 1_200_000, // TODO: preço não informado na mensagem do WhatsApp
         tipo: 'Rancho', // ⚠️ Ver observação abaixo sobre tipagem
         finalidade: 'Venda',
         cidade: 'Três Lagoas',
