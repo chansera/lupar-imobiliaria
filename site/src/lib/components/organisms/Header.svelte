@@ -1,9 +1,20 @@
 <script lang="ts">
  import { slide } from 'svelte/transition';
+ import { page } from '$app/state';
  import { SITE_INFO, SITE_ROUTES,ACTIVE_PATH_PATTERNS } from '$lib/constants';
- import logoImg from '/static/assets/logo.png?enhanced';
+ import logoImg from '/src/assets/logo.webp?enhanced';
 
  let {isMenuOpen = false} = $props();
+ let currentPath = $derived(page.url.pathname);
+
+  // 1. A função que falta: O "motor" de verificação
+  function isActive(href: string): boolean {
+    const patterns = ACTIVE_PATH_PATTERNS[href];
+    if (!patterns) return href === '/'; // Fallback para home
+
+    // Executa o teste: se algum regex bater, retorna true
+    return patterns.some((regex) => regex.test(currentPath));
+  }
 
  function toggleMenu() {
      isMenuOpen = !isMenuOpen;
@@ -28,17 +39,17 @@
                     <a
                         href={link.href}
                         class="text-sm font-bold uppercase tracking-wide transition-all relative py-2
-                             {ACTIVE_PATH_PATTERNS === link.href ? 'text-brand' : 'text-gray-500 hover:text-brand'}"
+                             {isActive(link.href) ? 'text-brand' : 'text-gray-500 hover:text-brand'}"
                     >
                         {link.name}
-                        {#if ACTIVE_PATH_PATTERNS === link.href}
+                        {#if isActive(link.href)}
                             <span class="absolute bottom-0 left-0 w-full h-0.5 bg-brand rounded-full" transition:slide></span>
                         {/if}
                     </a>
                 {/each}
             </nav>
 
-            <div class="flex items-center gap-4 mr-20">
+            <div class="flex items-center gap-4">
 
                 <a
                     href="https://wa.me/{SITE_INFO.whatsapp}"
@@ -66,7 +77,7 @@
 
     {#if isMenuOpen}
         <div
-            class="md:hidden absolute top-full left-0 w-full bg-white border-t border-gray-100 shadow-2xl py-4 px-4 flex flex-col gap-2 z-50"
+            class="md:hidden  w-80 absolute top-full right-0 bg-white border-t border-gray-100 shadow-2xl  py-4 px-4 flex flex-col gap-2 "
             transition:slide={{ duration: 300 }}
             style="max-height: calc(100vh - 80px); overflow-y: auto;"
         >
@@ -74,7 +85,7 @@
                 <a
                     href={link.href}
                     class="block py-3 px-4 rounded-lg font-bold text-gray-700 hover:bg-brand/5 hover:text-brand transition-colors
-                         {ACTIVE_PATH_PATTERNS === link.href ? 'bg-brand/5 text-brand' : ''}"
+                         { isActive(link.href) ? 'bg-brand/5 text-brand' : ''}"
                     onclick={closeMenu}
                 >
                     {link.name}

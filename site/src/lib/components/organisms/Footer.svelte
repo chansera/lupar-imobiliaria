@@ -2,7 +2,7 @@
 	import { SITE_INFO, SITE_ROUTES } from '$lib/constants';
 	import { page } from '$app/state';
 
-	import logoImg from '/static/assets/logo.png?enhanced';
+	import logoImg from '/src/assets/logo.webp?enhanced';
 
 	let currentPath = $derived(page.url.pathname);
 
@@ -17,7 +17,7 @@
 	<div class="container mx-auto grid grid-cols-1 gap-10 px-4 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
 
 		<div class="flex flex-col items-start">
-			<a href="/" title="Hero Banner with Lupar logo " class="mb-4 inline-block transition-transform hover:scale-105">
+			<a href="/" title="Logo da empresa lupar imobiliária" class="mb-4 inline-block transition-transform hover:scale-105">
 				<enhanced:img src={logoImg} alt={SITE_INFO.nome} class="h-16 w-auto object-contain" />
 			</a>
 			<p class="mb-4 max-w-xs text-left text-sm leading-relaxed text-victoria-500">
