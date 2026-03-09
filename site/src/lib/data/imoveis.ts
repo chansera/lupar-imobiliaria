@@ -246,28 +246,6 @@ export const imoveis: Imovel[] = [
         ]
     },
     {
-        cod: 'casa-vila-nova',
-        titulo: 'Casa à Venda na Vila Nova',
-        slug: 'casa-vila-nova',
-        preco: 150_000,
-        tipo: 'Casa',
-        finalidade: 'Venda',
-        bairro: 'Vila Nova',
-        cidade: 'Três Lagoas',
-        quartos: 1,
-        banheiros: 1,
-        areaTotal: 250,
-        areaConstruida: 70,
-        descricao: `• 01 sala conjugada com cozinha\n• 01 quarto\n• 01 Banheiro\n• Área com churrasqueira\n• Terreno 10x25 (250m²)`,
-        imagens: [
-            {
-                url: '/assets/images/imoveis/vila-nova/casa1/capa.jpeg',
-                alt: 'Casa na Vila Nova - Vista frontal',
-                isCover: true
-            }
-        ]
-    },
-    {
         cod: 'casa-interlagos',
         titulo: 'Casa à Venda no Interlagos',
         slug: 'casa-interlagos',
@@ -491,12 +469,12 @@ export const imoveis: Imovel[] = [
         ]
     },
     {
-        cod: 'casa-vila-nova-aluguel',
-        titulo: 'Casa para Locação na Vila Nova',
+        cod: 'casa-vila-nova-venda',
+        titulo: 'Casa para Venda na Vila Nova',
         slug: 'casa-vila-nova-aluguel',
-        preco: 1_500,
+        preco: 150_000,
         tipo: 'Casa',
-        finalidade: 'Aluguel',
+        finalidade: 'Venda',
         cidade: 'Três Lagoas',
         bairro: 'Vila Nova',
         quartos: 3,
