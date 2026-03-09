@@ -551,4 +551,25 @@ export const imoveis: Imovel[] = [
             }
         ]
     },
+    {
+        cod: 'terreno-joao-carrato-esquina',
+        titulo: 'Terreno à Venda - João Carrato esq. Manoel Ferreira da Rocha',
+        slug: 'terreno-joao-carrato-esquina',
+        preco: 320_000,
+        tipo: 'Terreno',
+        finalidade: 'Venda',
+        cidade: 'Três Lagoas',
+        bairro: 'Sam', // ⚠️ Confirmar se "sam" = Santo André
+        regiao: 'João Carrato esquina com a Manoel Ferreira da Rocha',
+        areaTotal: 500,
+        dimensao: '10 x 50',
+        descricao: `• Terreno de esquina\n• Medidas: 10 x 50 metros\n• Área total: 500m²\n• Localização: João Carrato esquina com a Manoel Ferreira da Rocha`,
+        imagens: [
+            {
+                url: '/assets/images/imoveis/sam/capa.jpg',
+                alt: 'Terreno a evnda Joaõ Carreto',
+                isCover: true
+            },
+        ]
+    },
 ];
