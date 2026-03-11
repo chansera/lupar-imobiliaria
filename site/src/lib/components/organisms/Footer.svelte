@@ -96,7 +96,7 @@
 		<div>
 			<h4 class="mb-5 text-sm font-bold uppercase tracking-wider text-indigo-900">Siga-nos</h4>
 			<a
-				href="https://instagram.com/suaimobiliaria"
+				href="https://instagram.com/luparimobiliaria"
 				target="_blank"
 				rel="noopener noreferrer"
 				title="Instagram da {SITE_INFO.nome}"
