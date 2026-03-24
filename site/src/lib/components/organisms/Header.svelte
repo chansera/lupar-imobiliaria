@@ -2,17 +2,14 @@
  import { slide } from 'svelte/transition';
  import { page } from '$app/state';
  import { SITE_INFO, SITE_ROUTES,ACTIVE_PATH_PATTERNS } from '$lib/constants';
- import logoImg from '/src/assets/logo.webp?enhanced';
+ import logoImg from '/src/assets/logo.webp';
 
  let {isMenuOpen = false} = $props();
  let currentPath = $derived(page.url.pathname);
 
-  // 1. A função que falta: O "motor" de verificação
   function isActive(href: string): boolean {
     const patterns = ACTIVE_PATH_PATTERNS[href];
     if (!patterns) return href === '/'; // Fallback para home
-
-    // Executa o teste: se algum regex bater, retorna true
     return patterns.some((regex) => regex.test(currentPath));
   }
 
@@ -31,7 +28,7 @@
         <div class="flex items-center justify-between h-20">
 
 			<a href="/" title="Logo da empresa Lupar" class=" inline-block transition-transform hover:scale-105">
-				<enhanced:img src={logoImg} alt={SITE_INFO.nome} class="h-20 w-auto object-contain" />
+				<img src={logoImg} alt={SITE_INFO.nome} class="h-20 w-auto object-contain" />
 			</a>
 
             <nav class="hidden md:flex items-center gap-8 ">

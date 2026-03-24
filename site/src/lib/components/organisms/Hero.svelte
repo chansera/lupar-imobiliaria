@@ -1,6 +1,6 @@
 <script lang="ts">
 
-	import heroBg from '/src/assets/banner-home.webp?enhanced';
+	import heroBg from '/src/assets/banner-home.webp';
 
 	let {
 		title = "Encontre seu imóvel ideal",
@@ -14,11 +14,13 @@
 <section class="relative overflow-hidden bg-slate-900 py-20 text-white md:py-32">
 
 	<div class="absolute inset-0 z-0">
-		<enhanced:img
+		<img
 			src={heroBg}
 			alt="Imagem de fundo imobiliária"
 			class="h-full w-full object-cover"
 			sizes="(min-width:1920px) 1280px, (min-width:1080px) 640px, (min-width:768px) 400px, 100vw"
+            loading="lazy"
+
 		/>
 	</div>
 

@@ -471,8 +471,8 @@ export const imoveis: Imovel[] = [
     {
         cod: 'casa-vila-nova-venda',
         titulo: 'Casa para Venda na Vila Nova',
-        slug: 'casa-vila-nova-aluguel',
-        preco: 150_000,
+        slug: 'casa-vila-nova-venda',
+        preco: 300_000,
         tipo: 'Casa',
         finalidade: 'Venda',
         cidade: 'Três Lagoas',
@@ -483,47 +483,47 @@ export const imoveis: Imovel[] = [
         descricao: `• 03 quartos\n• 02 Banheiros\n• 01 Cozinha\n• Sala\n• Lavanderia\n• Garagem coberta\n\n🔑 Lupar Imobiliária\n📱 (67) 98467-9017 | ☎️ (67) 3521-3520\n📍 Rua Oscar Guimarães, 1067, Centro`,
         imagens: [
             {
-                url: '/assets/images/imoveis/vila-nova/casa2/capa.jpeg',
+                url: '/assets/images/imoveis/vila-nova/casa/capa.jpeg',
                 alt: 'Casa na Vila Nova para Aluguel - Vista frontal',
                 isCover: true
             },
             {
-                url: '/assets/images/imoveis/vila-nova/casa2/sala.jpeg',
+                url: '/assets/images/imoveis/vila-nova/casa/sala.jpeg',
                 alt: 'Sala de estar',
                 isCover: false
             },
             {
-                url: '/assets/images/imoveis/vila-nova/casa2/cozinha.jpeg',
+                url: '/assets/images/imoveis/vila-nova/casa/cozinha.jpeg',
                 alt: 'Cozinha',
                 isCover: false
             },
             {
-                url: '/assets/images/imoveis/vila-nova/casa2/cozinha2.jpeg',
+                url: '/assets/images/imoveis/vila-nova/casa/cozinha2.jpeg',
                 alt: 'Cozinha - ângulo 2',
                 isCover: false
             },
             {
-                url: '/assets/images/imoveis/vila-nova/casa2/quarto.jpeg',
+                url: '/assets/images/imoveis/vila-nova/casa/quarto.jpeg',
                 alt: 'Quarto principal',
                 isCover: false
             },
             {
-                url: '/assets/images/imoveis/vila-nova/casa2/quarto2.jpeg',
+                url: '/assets/images/imoveis/vila-nova/casa/quarto2.jpeg',
                 alt: 'Segundo quarto',
                 isCover: false
             },
             {
-                url: '/assets/images/imoveis/vila-nova/casa2/banheiro.jpeg',
+                url: '/assets/images/imoveis/vila-nova/casa/banheiro.jpeg',
                 alt: 'Banheiro',
                 isCover: false
             },
             {
-                url: '/assets/images/imoveis/vila-nova/casa2/areaExterna.jpeg',
+                url: '/assets/images/imoveis/vila-nova/casa/areaExterna.jpeg',
                 alt: 'Área externa',
                 isCover: false
             },
             {
-                url: '/assets/images/imoveis/vila-nova/casa2/quintal.jpeg',
+                url: '/assets/images/imoveis/vila-nova/casa/quintal.jpeg',
                 alt: 'Quintal',
                 isCover: false
             }
@@ -547,6 +547,53 @@ export const imoveis: Imovel[] = [
                 url: '/assets/images/imoveis/sam/capa.jpg',
                 alt: 'Terreno a evnda Joaõ Carreto',
                 isCover: true
+            },
+        ]
+    },
+    {
+        cod: 'casa-a-venda-vilanova',
+        titulo: 'Casa à venda no Bairro Vila Nova',
+        slug: 'casa2-vila-nova',
+        preco: 850_000,
+        tipo: 'Casa',
+        finalidade: 'Venda',
+        cidade: 'Três Lagoas',
+        bairro: 'Vila Nova',
+        quartos: 3,
+        banheiros: 2,
+        suites: 1,
+        vagas: 2,
+        descricao: `• 3 quartos, sendo 1 suíte\n• Sala\n• Cozinha\n• 1 Banheiro Social\n •Lavabo\n• Piscina e Garagem para 2 carros`,
+        imagens: [
+            {
+                url: '/assets/images/imoveis/vila-nova/casa2/capa.jpeg',
+                alt: 'Visão de frente da casa',
+                isCover: true
+            },
+            {
+                url: '/assets/images/imoveis/vila-nova/casa2/area-lazer.jpeg',
+                alt: 'Visão da área de lazer',
+                isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/vila-nova/casa2/fundo.jpeg',
+                alt: 'Visão do fundo da casa',
+                isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/vila-nova/casa2/garagem.jpeg',
+                alt: 'Visão da garagem da casa',
+                isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/vila-nova/casa2/piscina.jpeg',
+                alt: 'Visão da piscina da casa',
+                isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/vila-nova/casa2/quintal.jpeg',
+                alt: 'Visão do quintal da casa',
+                isCover: false
             },
         ]
     },
