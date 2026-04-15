@@ -597,4 +597,91 @@ export const imoveis: Imovel[] = [
             },
         ]
     },
+    {
+        cod: 'casa-a-venda-sao-carlos',
+        titulo: 'Casa à venda no Bairro São Carlos',
+        slug: 'casa2-sao-carlos',
+        preco: 550_000,
+        tipo: 'Casa',
+        finalidade: 'Venda',
+        cidade: 'Três Lagoas',
+        bairro: 'São Carlos',
+        quartos: 3,
+        banheiros: 2,
+        suites: 1,
+        vagas: 2,
+        descricao: `• 3 quartos, sendo 1 suíte\n• Sala ampla\n• Cozinha\n• 1 Banheiro Social\n • 1 Lavabo\n• Piscina\n• 1 poço semi artesiano\n• área em L no fundo com mais 200mts construído\n• 1 area de serviço\n •aceita área rural próximo a Três Lagoas, Castilho, Itapura ou Veículos`,
+        imagens: [
+            {
+                url: '/assets/images/imoveis/sao-carlos/casa2/frente.jpeg',
+                alt: 'Visão de frente da casa',
+                isCover: true
+            },
+            {
+                url: '/assets/images/imoveis/sao-carlos/casa2/area-lazer.jpeg',
+                alt: 'Visão da área de lazer',
+                isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/sao-carlos/casa2/area-lazer2.jpeg',
+                alt: 'Visão da área de lazer',
+                isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/sao-carlos/casa2/porta-fora.jpeg',
+                alt: 'Visão da casa a partir do quintal',
+                isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/sao-carlos/casa2/piscina.jpeg',
+                alt: 'Visão da piscina da casa',
+                isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/sao-carlos/casa2/quintal.jpeg',
+                alt: 'Visão do quintal da casa',
+                isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/sao-carlos/casa2/cozinha.jpeg',
+                alt: 'Cozinha - ângulo 1',
+                isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/sao-carlos/casa2/cozinha2.jpeg',
+                alt: 'Cozinha - ângulo 2',
+                isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/sao-carlos/casa2/suite.jpeg',
+                alt: 'Suite',
+                isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/sao-carlos/casa2/quarto.jpeg',
+                alt: 'Quarto principal',
+                isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/sao-carlos/casa2/quarto2.jpeg',
+                alt: 'Segundo quarto',
+                isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/sao-carlos/casa2/quarto3.jpeg',
+                alt: 'Terceiro quarto',
+                isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/sao-carlos/casa2/corredor.jpeg',
+                alt: 'Corredor fora da casa',
+                isCover: false
+            },
+            {
+                url: '/assets/images/imoveis/sao-carlos/casa2/corredor-quarto.jpeg',
+                alt: 'Corredor dentro da casa',
+                isCover: false
+            },
+        ]
+    },
 ];
