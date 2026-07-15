@@ -382,7 +382,7 @@ export const imoveis: Imovel[] = [
         slug: 'casa-sao-carlos',
         preco: 550_000,
         tipo: 'Casa',
-        finalidade: 'Venda', // ⚠️ Ver observação sobre "Locação e Venda" abaixo
+        finalidade: 'Venda',
         cidade: 'Três Lagoas',
         bairro: 'São Carlos',
         quartos: 4,
